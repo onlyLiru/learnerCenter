@@ -1,0 +1,30 @@
+@import 'common';
+.common-header{
+	height:60px;
+	padding:10px 0;
+	background-color:$green;
+	border-bottom:10px solid $yellow;
+	color:#fff;
+	* {
+		color:#fff;
+	}
+	.logo{
+	    h1{
+	    	display: inline-block;
+	    	text-indent: -99rem;
+	    	width: 120px;
+	    	height: 50px;
+	    	background: url(http://img.fancyedu.com/sys/ic/operation/1474514079028_logo.png) no-repeat;
+	    	background-size: 100% 100%;
+	    }
+	    span{
+	    	font-size:1.5rem;
+	    	padding-left:10px;
+	    	position:relative;
+	    	top:16px;
+	    }
+	}
+	.right{
+		padding-top:10px;
+	}
+}
