@@ -21,19 +21,21 @@ webpackJsonp([0,1],[
 	var Header = __webpack_require__(186);
 	var Nav = __webpack_require__(187);
 	var T1 = __webpack_require__(188);
+	var Footer = __webpack_require__(193);
 	
 	var Main = _react2.default.createClass({
-	    displayName: 'Main',
+	  displayName: 'Main',
 	
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(Header, null),
-	            _react2.default.createElement(Nav, null),
-	            _react2.default.createElement(T1, null)
-	        );
-	    }
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(Header, null),
+	      _react2.default.createElement(Nav, null),
+	      _react2.default.createElement(T1, null),
+	      _react2.default.createElement(Footer, null)
+	    );
+	  }
 	});
 	
 	_reactDom2.default.render(_react2.default.createElement(Main, null), document.getElementById('J_Container'));
@@ -22200,6 +22202,110 @@ webpackJsonp([0,1],[
 	
 	// module
 	exports.push([module.id, ".maxW {\n  max-width: 990px;\n  min-width: 790px;\n  margin: 0 auto;\n}\n\n.common-header {\n  height: 60px;\n  padding: 10px 0;\n  background-color: #599245;\n  border-bottom: 10px solid #ffd600;\n  color: #fff;\n}\n\n.common-header * {\n  color: #fff;\n}\n\n.common-header .logo h1 {\n  display: inline-block;\n  text-indent: -99rem;\n  width: 120px;\n  height: 50px;\n  background: url(http://img.fancyedu.com/sys/ic/operation/1474514079028_logo.png) no-repeat;\n  background-size: 100% 100%;\n}\n\n.common-header .logo span {\n  font-size: 1.5rem;\n  padding-left: 10px;\n  position: relative;\n  top: 16px;\n}\n\n.common-header .right {\n  padding-top: 10px;\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	__webpack_require__(194);
+	
+	module.exports = _react2.default.createClass({
+		displayName: 'exports',
+	
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'footer' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'maxW uk-flex uk-flex-space-between' },
+					_react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'span',
+							{ className: 'uk-text-bold' },
+							'\u5408\u4F5C\u4F19\u4F34:'
+						),
+						_react2.default.createElement('img', { src: 'http://img.fancyedu.com/sys/ic/operation/1474515842840_l1.png' }),
+						_react2.default.createElement('img', { src: 'http://img.fancyedu.com/sys/ic/operation/1474516088718_ll1.png' })
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ className: 'uk-margin-right' },
+							'Copyright@2016 \u51E1\u5B66\u6559\u80B2'
+						),
+						_react2.default.createElement(
+							'a',
+							{ className: 'uk-margin-right' },
+							'All Rights Reserved'
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: 'http://www.miitbeian.gov.cn' },
+							'\u6CAAICP\u590714038198\u53F7'
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: 'http://www.fancyedu.com' },
+							_react2.default.createElement('img', { src: 'http://img.fancyedu.com/sys/ic/operation/1474517161277_ss.png' })
+						)
+					)
+				)
+			);
+		}
+	});
+
+/***/ },
+/* 194 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(195);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(181)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/.0.23.1@css-loader/index.js!./../../node_modules/.4.0.2@sass-loader/index.js?outputStyle=expanded!./footer.scss", function() {
+				var newContent = require("!!./../../node_modules/.0.23.1@css-loader/index.js!./../../node_modules/.4.0.2@sass-loader/index.js?outputStyle=expanded!./footer.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 195 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(180)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".footer {\n  background: #000;\n  padding: 15px 0;\n  border-bottom: 10px solid #ffd600;\n}\n\n.footer a {\n  color: #fff;\n}\n\n.footer img {\n  margin-left: 10px;\n}\n\n.footer span {\n  margin-left: 5px;\n  padding-right: 5px;\n  border-right: 1px solid #ccc;\n}\n\n.footer span:last-child {\n  border: none;\n}\n", ""]);
 	
 	// exports
 
