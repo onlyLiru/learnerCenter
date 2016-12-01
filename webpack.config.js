@@ -14,21 +14,21 @@ module.exports = {
     devtool: 'sourcemap',
     plugins: [
     	commonsPlugin,
-		new webpack.optimize.DedupePlugin(),
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': '"production"'
-		}),
-		new webpack.optimize.UglifyJsPlugin({
-			output: {
-				comments: false,
-			},
-			compress: {
-				warnings: false
-			}
-		}),
-		new webpack.optimize.OccurenceOrderPlugin(),
-		new webpack.optimize.AggressiveMergingPlugin(),
-		new webpack.NoErrorsPlugin()
+		// new webpack.optimize.DedupePlugin(),
+		// new webpack.DefinePlugin({
+		// 	'process.env.NODE_ENV': '"production"'
+		// }),
+		// new webpack.optimize.UglifyJsPlugin({
+		// 	output: {
+		// 		comments: false,
+		// 	},
+		// 	compress: {
+		// 		warnings: false
+		// 	}
+		// }),
+		// new webpack.optimize.OccurenceOrderPlugin(),
+		// new webpack.optimize.AggressiveMergingPlugin(),
+		// new webpack.NoErrorsPlugin()
 	],
 	module: {
 		loaders: [
@@ -72,6 +72,16 @@ module.exports = {
 				loader: 'file-loader'
 			}
 		]
+	},
+	postcss: [
+	    require('autoprefixer')
+	],
+	devServer: {
+	    contentBase: "./",
+	    hot: true,
+	    colors: true,
+	    historyApiFallback: true,
+	    inline: true
 	},
 	resolve: {
 		extensions: [ '', '.js', '.json', '.scss' ],

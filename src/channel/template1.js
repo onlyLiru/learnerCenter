@@ -1,9 +1,6 @@
 import React from 'react';
-require('../css/common.scss');
-require('../css/nav.scss');
-require('../css/header.scss');
 
-const T1=React.createClass({
+module.exports=React.createClass({
 	render:function(){
 		return (
 			<div className="maxW">
@@ -56,48 +53,3 @@ const T1=React.createClass({
 		)
 	}
 });
-
-const Nav=React.createClass({
-	render:function(){
-		return (<nav className="common-nav maxW">
-				<img src="http://www.ngkidschina.com/Public/Home/images/welcome.png"/>
-				<span className="topNav">
-				    <a className="uk-margin-left" data-rel="index" href="index.html?page=index">首页</a>
-				    <a className="uk-margin-left active" data-rel="english" href="channel.html?page=english">英语</a>
-				    <a className="uk-margin-left" data-rel="stem" href="channel.html?page=stem">科学</a>
-				    <a className="uk-margin-left" data-rel="art" href="channel.html?page=art">艺术</a>
-				    <a className="uk-margin-left" data-rel="summerCamp" href="summerCamp.html?page=summerCamp">夏令营</a>
-				    <a className="uk-margin-left" data-rel="club" href="xiaoxiaoyudujia.html?page=club">
-				        俱乐部
-				    </a>
-				    <a className="uk-margin-left" data-rel="schools" href="schools.html?page=schools">
-				        全国校区
-				    </a>
-				    <a className="uk-margin-left" data-rel="photography" target="_blank" href="photography.html?page=photography">摄影</a>
-				</span>	
-			</nav>)
-	}
-});
-
-const Index=React.createClass({
-	render:function(){
-		return <div>
-			<header className="common-header">
-				<div className="maxW uk-flex uk-flex-space-between">
-					<div className="logo">
-						<h1>logo</h1>
-						<span>环球少年 • 学习体验中心</span>
-					</div>
-					<div className="right">
-						<span className="uk-text-small">CARE THE PLANET, DARE TO EXPLORE</span>
-						<h2 className="uk-margin-remove">关爱地球，勇于探索</h2>
-					</div>
-				</div>
-			</header>
-			<Nav />
-			<T1/>
-		</div>
-	}
-});
-
-module.exports=Index;
