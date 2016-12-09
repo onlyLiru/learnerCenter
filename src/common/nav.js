@@ -1,11 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router'
 require('../css/nav.scss');
 
 module.exports=React.createClass({
 	render:function(){
+		// console.log(this.props.location.query.name);
+		console.log(this.props.children);
 		return (<nav className="common-nav maxW">
 				<img src="http://www.ngkidschina.com/Public/Home/images/welcome.png"/>
 				<span className="topNav">
+					<Link activeStyle={{color: 'red'}} to="/head">About</Link>
 				    <a className="uk-margin-left" data-rel="index" href="index.html?page=index">首页</a>
 				    <a className="uk-margin-left active" data-rel="english" href="channel.html?page=english">英语</a>
 				    <a className="uk-margin-left" data-rel="stem" href="channel.html?page=stem">科学</a>
@@ -18,7 +22,7 @@ module.exports=React.createClass({
 				        全国校区
 				    </a>
 				    <a className="uk-margin-left" data-rel="photography" target="_blank" href="photography.html?page=photography">摄影</a>
-				</span>	
+				</span>
 			</nav>)
 	}
 });
