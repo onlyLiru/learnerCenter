@@ -3,12 +3,14 @@ var path = require('path');
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var BowerWebpackPlugin = require('bower-webpack-plugin');
 module.exports = {
+	port: 8088,
+	publicPath: '/dist/',
 	entry: {
 		index:'./src/js/index.js'
 	},
 	output: {
 		filename: '[name].bundle.js',
-		path: './dist/js'
+		path: path.join(__dirname, '/dist/js/')
 	},
 	cache: false,
     devtool: 'sourcemap',
@@ -77,11 +79,11 @@ module.exports = {
 	    require('autoprefixer')
 	],
 	devServer: {
-	    contentBase: "./",
-	    hot: true,
-	    colors: true,
-	    historyApiFallback: true,
-	    inline: true
+	  contentBase: './',
+	  historyApiFallback: true,
+	  hot: true,
+	  port: this.port,
+	  noInfo: false
 	},
 	resolve: {
 		extensions: [ '', '.js', '.json', '.scss' ],
