@@ -88,7 +88,8 @@ module.exports = {
 	resolve: {
 		extensions: [ '', '.js', '.json', '.scss' ],
 		alias: {
-			uikit:__dirname+'/bower_components/uikit/'
+			uikit:__dirname+'/bower_components/uikit/',
+			mui:__dirname+'/mui-master/dist'
 		}
 	}
 }

@@ -21,7 +21,6 @@ webpackJsonp([0,1],[
 	var Nav = __webpack_require__(239);
 	var T1 = __webpack_require__(242);
 	var Footer = __webpack_require__(243);
-	
 	var App = _react2.default.createClass({
 	  displayName: 'App',
 	  render: function render() {
@@ -29,13 +28,24 @@ webpackJsonp([0,1],[
 	      'div',
 	      null,
 	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        '\u8FD9\u4E2A\u662F\u6807\u98982aaa'
+	        'header',
+	        { className: 'mui-bar mui-bar-nav' },
+	        _react2.default.createElement('a', { className: 'mui-icon mui-icon-bars mui-pull-left mui-plus-visible' }),
+	        _react2.default.createElement('a', { className: 'mui-icon mui-icon-info-filled mui-pull-right', id: 'info' }),
+	        _react2.default.createElement(
+	          'h1',
+	          { className: 'mui-title' },
+	          '\u9996\u9875'
+	        )
 	      ),
-	      this.props.children
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'mui-content' },
+	        this.props.children
+	      )
 	    );
-	  }
+	  },
+	  componentDidMount: function componentDidMount() {}
 	});
 	
 	var Main = _react2.default.createClass({
