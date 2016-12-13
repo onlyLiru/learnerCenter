@@ -1,9 +1,3 @@
-$green:#599245;
-$yellow:#ffd600;
-$maxW:990px;
-$minW:790px;
-.maxW{
-	max-width:$maxW;
-	min-width:$minW;
-	margin:0 auto;
+body,.mui-content{
+	background-color:#fff;
 }

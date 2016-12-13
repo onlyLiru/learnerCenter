@@ -89,7 +89,8 @@ module.exports = {
 		extensions: [ '', '.js', '.json', '.scss' ],
 		alias: {
 			uikit:__dirname+'/bower_components/uikit/',
-			mui:__dirname+'/mui-master/dist'
+			muijs:__dirname+'/mui/js',
+			muicss:__dirname+'/mui/css'
 		}
 	}
 }
