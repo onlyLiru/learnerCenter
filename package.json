@@ -101,8 +101,5 @@
     "pinkyswear": "~2.2.2",
     "quill": "^1.0.4",
     "refetch": "^0.2.1"
-  },
-  "pre-commit": [
-    "lint"
-  ]
+  }
 }
