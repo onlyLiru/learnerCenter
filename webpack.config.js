@@ -33,17 +33,22 @@ module.exports = {
 		// new webpack.NoErrorsPlugin()
 	],
 	module: {
+		preLoaders: [
+		  {
+		    test: /\.(js|jsx)$/,
+		    include: './src/js',
+		    loader: 'eslint-loader'
+		  }
+		],
 		loaders: [
 			{
 			    test: /\.json$/,
 			    loader: "json"
-			}, {
+			}, 
+			{
 			    test: /\.js$/,
 			    exclude: /node_modules/,
-			    loader: 'babel',
-			    query: {
-	              presets: ['react', 'es2015', 'stage-0']
-	            }
+			    loader: 'babel-loader'
 			},
 			{
 				test: /\.css$/,
@@ -86,7 +91,8 @@ module.exports = {
 	  noInfo: false
 	},
 	resolve: {
-		extensions: [ '', '.js', '.json', '.scss' ],
+		modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],
+		extensions: [ '', '.web.js', '.js', '.json', '.scss' ],
 		alias: {
 			uikit:__dirname+'/bower_components/uikit/',
 			muijs:__dirname+'/mui/js',
