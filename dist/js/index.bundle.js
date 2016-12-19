@@ -38210,41 +38210,53 @@ webpackJsonp([0,1],[
 
 	'use strict';
 	
-	var _style7 = __webpack_require__(327);
+	var _style9 = __webpack_require__(327);
 	
 	var _button = __webpack_require__(333);
 	
 	var _button2 = _interopRequireDefault(_button);
 	
-	var _style8 = __webpack_require__(434);
+	var _style10 = __webpack_require__(434);
 	
 	var _switch = __webpack_require__(437);
 	
 	var _switch2 = _interopRequireDefault(_switch);
 	
-	var _style9 = __webpack_require__(346);
+	var _style11 = __webpack_require__(367);
+	
+	var _picker = __webpack_require__(370);
+	
+	var _picker2 = _interopRequireDefault(_picker);
+	
+	var _style12 = __webpack_require__(346);
 	
 	var _whiteSpace = __webpack_require__(349);
 	
 	var _whiteSpace2 = _interopRequireDefault(_whiteSpace);
 	
-	var _style10 = __webpack_require__(438);
+	var _style13 = __webpack_require__(350);
+	
+	var _toast = __webpack_require__(353);
+	
+	var _toast2 = _interopRequireDefault(_toast);
+	
+	var _style14 = __webpack_require__(438);
 	
 	var _datePicker = __webpack_require__(439);
 	
 	var _datePicker2 = _interopRequireDefault(_datePicker);
 	
-	var _style11 = __webpack_require__(392);
-	
-	var _list = __webpack_require__(395);
-	
-	var _list2 = _interopRequireDefault(_list);
-	
-	var _style12 = __webpack_require__(563);
+	var _style15 = __webpack_require__(563);
 	
 	var _inputItem = __webpack_require__(566);
 	
 	var _inputItem2 = _interopRequireDefault(_inputItem);
+	
+	var _style16 = __webpack_require__(392);
+	
+	var _list = __webpack_require__(395);
+	
+	var _list2 = _interopRequireDefault(_list);
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
@@ -38253,6 +38265,10 @@ webpackJsonp([0,1],[
 	var _react2 = _interopRequireDefault(_react);
 	
 	var _rcForm = __webpack_require__(397);
+	
+	var _rcUpload = __webpack_require__(689);
+	
+	var _rcUpload2 = _interopRequireDefault(_rcUpload);
 	
 	var _moment = __webpack_require__(568);
 	
@@ -38264,6 +38280,8 @@ webpackJsonp([0,1],[
 	
 	__webpack_require__(431);
 	
+	var Item = _list2.default.Item;
+	var Brief = Item.Brief;
 	var zhNow = (0, _moment2.default)().locale('zh-cn').utcOffset(8);
 	var maxDate = (0, _moment2.default)('2018-12-03 +0800', 'YYYY-MM-DD Z').utcOffset(8);
 	var minDate = (0, _moment2.default)('1940-01-01 +0800', 'YYYY-MM-DD Z').utcOffset(8);
@@ -38273,14 +38291,83 @@ webpackJsonp([0,1],[
 	
 	var gmtNow = (0, _moment2.default)().utcOffset(0);
 	
+	var district = [{
+		value: '1',
+		label: '杭州市',
+		children: [{
+			value: '2',
+			label: '西湖区',
+			children: [{
+				value: '3',
+				label: '桃园小镇'
+			}]
+		}]
+	}, {
+		value: '34000',
+		label: '上海市',
+		children: [{
+			value: '40800',
+			label: '松江区',
+			children: [{
+				value: '34024',
+				label: '泰晤士小镇'
+			}]
+		}]
+	}];
+	var school = [{
+		value: '1',
+		label: '南开'
+	}, {
+		value: '2',
+		label: '北大'
+	}];
+	
+	var data = [{
+		url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
+		id: '2121'
+	}, {
+		url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
+		id: '2122'
+	}];
+	var props = {
+		action: '/upload.do',
+		multiple: true,
+		onStart: function onStart(file) {
+			console.log('onStart', file, file.name);
+		},
+		onSuccess: function onSuccess(ret) {
+			console.log('onSuccess', ret);
+		},
+		onError: function onError(err) {
+			console.log('onError', err);
+		},
+		beforeUpload: function beforeUpload(file, fileList) {
+			alert(file.url);
+			console.log(file, fileList);
+			return new Promise(function (resolve) {
+				console.log('start check');
+				setTimeout(function () {
+					console.log('check finshed');
+					resolve(file);
+				}, 3000);
+			});
+		},
+		previewImage: function previewImage(file) {}
+	};
+	
 	var Form = _react2.default.createClass({
 		displayName: 'Form',
 	
 		render: function render() {
+			var _this = this;
+	
+			var self = this;
 			var _props$form = this.props.form,
 			    getFieldProps = _props$form.getFieldProps,
 			    getFieldError = _props$form.getFieldError;
+			/*本人照片url地址*/
 	
+			var picUrl = self.state.pic.picUrl;
 			return _react2.default.createElement(
 				'div',
 				null,
@@ -38290,17 +38377,17 @@ webpackJsonp([0,1],[
 					_react2.default.createElement(
 						_inputItem2.default,
 						_extends({
-							placeholder: '\u8BF7\u8F93\u5165\u59D3\u540D'
-						}, getFieldProps('inputClear')),
+							placeholder: '\u8BF7\u8F93\u5165\u59D3\u540D',
+							clear: true
+						}, getFieldProps('name')),
 						'\u59D3\u540D'
 					),
 					_react2.default.createElement(
 						_datePicker2.default,
 						_extends({
 							mode: 'date',
-							title: '\u9009\u62E9\u65E5\u671F',
-							extra: '\u8BF7\u8F93\u5165\u751F\u65E5'
-						}, getFieldProps('date1', {}), {
+							title: '\u9009\u62E9\u65E5\u671F'
+						}, getFieldProps('birthday', {}), {
 							minDate: minDate,
 							maxDate: zhNow
 						}),
@@ -38311,11 +38398,27 @@ webpackJsonp([0,1],[
 						)
 					),
 					_react2.default.createElement(
-						_inputItem2.default,
-						_extends({
-							extra: _react2.default.createElement('img', { src: 'http://img.fancyedu.com/sys/ic/operation/1481770810992_1.png' })
-						}, getFieldProps('inputClear')),
-						'\u672C\u4EBA\u7167\u7247'
+						_rcUpload2.default,
+						{
+							name: 'file',
+							action: 'upload.json',
+							onStart: function onStart(file) {
+								_this.setState({
+									pic: {
+										picUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+										hasChange: true
+									}
+								});
+								_toast2.default.loading('加载中...', 1, function () {});
+							} },
+						_react2.default.createElement(
+							_list2.default.Item,
+							{
+								arrow: 'horizontal',
+								extra: _react2.default.createElement('img', { style: { width: 100, height: 100 }, src: picUrl })
+							},
+							'\u672C\u4EBA\u7167\u7247'
+						)
 					)
 				),
 				_react2.default.createElement(_whiteSpace2.default, { size: 'sm' }),
@@ -38323,20 +38426,40 @@ webpackJsonp([0,1],[
 					_list2.default,
 					null,
 					_react2.default.createElement(
-						_inputItem2.default,
-						_extends({}, getFieldProps('label8'), {
-							labelNumber: 6 }),
-						'\u5230\u610F\u5927\u5229\u65F6\u95F4'
+						_datePicker2.default,
+						_extends({
+							mode: 'date',
+							title: '\u9009\u62E9\u65E5\u671F'
+						}, getFieldProps('italyDate', {}), {
+							minDate: minDate,
+							maxDate: zhNow
+						}),
+						_react2.default.createElement(
+							_list2.default.Item,
+							{ arrow: 'horizontal' },
+							'\u5230\u610F\u5927\u5229\u65F6\u95F4'
+						)
 					),
 					_react2.default.createElement(
-						_inputItem2.default,
-						null,
-						'\u6240\u5728\u57CE\u5E02'
+						_picker2.default,
+						_extends({
+							cols: '3',
+							extra: '\u8BF7\u9009\u62E9',
+							data: district,
+							title: '\u9009\u62E9\u5730\u533A'
+						}, getFieldProps('district', {
+							initialValue: ['1', '2', '3']
+						})),
+						_react2.default.createElement(
+							_list2.default.Item,
+							{ arrow: 'horizontal' },
+							'\u6240\u5728\u57CE\u5E02'
+						)
 					),
 					_react2.default.createElement(
 						_list2.default.Item,
 						{
-							extra: _react2.default.createElement(_switch2.default, getFieldProps('Switch1', {
+							extra: _react2.default.createElement(_switch2.default, getFieldProps('isStudying', {
 								initialValue: true,
 								valuePropName: 'checked'
 							}))
@@ -38344,14 +38467,50 @@ webpackJsonp([0,1],[
 						'\u662F\u5426\u5728\u8BFB\u8BED\u8A00\u5B66\u6821'
 					),
 					_react2.default.createElement(
-						_inputItem2.default,
-						null,
-						'\u62A5\u8003\u9662\u6821'
+						_picker2.default,
+						_extends({
+							cols: '1',
+							extra: '\u8BF7\u9009\u62E9(\u53EF\u9009)',
+							data: school,
+							title: '\u9009\u62E9\u5730\u533A'
+						}, getFieldProps('school', {
+							initialValue: ['2']
+						})),
+						_react2.default.createElement(
+							_list2.default.Item,
+							{ arrow: 'horizontal' },
+							'\u62A5\u8003\u9662\u6821'
+						)
 					),
 					_react2.default.createElement(
-						_inputItem2.default,
-						null,
-						'\u4E13\u4E1A'
+						_picker2.default,
+						_extends({ cols: '1',
+							extra: '\u8BF7\u9009\u62E9',
+							data: district,
+							title: '\u9009\u62E9\u5730\u533A'
+						}, getFieldProps('subject', {
+							initialValue: ['1']
+						})),
+						_react2.default.createElement(
+							_list2.default.Item,
+							{ arrow: 'horizontal' },
+							'\u4E13\u4E1A'
+						)
+					),
+					_react2.default.createElement(
+						_picker2.default,
+						_extends({ cols: '1',
+							extra: '\u8BF7\u9009\u62E9',
+							data: district,
+							title: '\u9009\u62E9\u5730\u533A'
+						}, getFieldProps('diploma', {
+							initialValue: ['1']
+						})),
+						_react2.default.createElement(
+							_list2.default.Item,
+							{ arrow: 'horizontal' },
+							'\u5B66\u5386'
+						)
 					)
 				),
 				_react2.default.createElement(_whiteSpace2.default, { size: 'sm' }),
@@ -38359,23 +38518,75 @@ webpackJsonp([0,1],[
 					_list2.default,
 					null,
 					_react2.default.createElement(
-						_inputItem2.default,
-						null,
-						'\u63D0\u4EA4\u4F5C\u54C1'
-					),
+						_rcUpload2.default,
+						_extends({}, getFieldProps('file', {
+							initialValue: ['1']
+						}), props),
+						_react2.default.createElement(
+							_list2.default.Item,
+							{
+								arrow: 'horizontal',
+								extra: '\u9009\u62E9\u6587\u4EF6' },
+							'\u63D0\u4EA4\u4F5C\u54C1'
+						)
+					)
+				),
+				_react2.default.createElement(
+					_list2.default,
+					null,
 					_react2.default.createElement(
 						_inputItem2.default,
-						null,
+						_extends({
+							clear: true
+						}, getFieldProps('phone', {
+							rules: [{ required: true, message: '请输入帐号' }, { validator: this.validatePhone }]
+						}), {
+							error: !!getFieldError('phone'),
+							onErrorClick: function onErrorClick() {
+								alert(getFieldError('phone').join('、'));
+							},
+							placeholder: '\u8BF7\u8F93\u5165\u8054\u7CFB\u65B9\u5F0F' }),
 						'\u8054\u7CFB\u65B9\u5F0F'
 					)
 				),
 				_react2.default.createElement(_whiteSpace2.default, { size: 'lg' }),
 				_react2.default.createElement(
 					_button2.default,
-					{ type: 'primary' },
+					{ type: 'primary', loading: true, onClick: this.onSubmit },
 					'\u4F53\u9A8C\u8BFE\u7A0B'
 				)
 			);
+		},
+		getInitialState: function getInitialState() {
+			return {
+				pic: {
+					picUrl: 'http://mall.fancyedu.com/WEB-UED/fancy/img/defaul.png',
+					hasChange: false
+				}
+			};
+		},
+		validatePhone: function validatePhone(rule, value, callback) {
+			if (value && value.length > 4) {
+				callback();
+			} else {
+				callback(new Error('帐号至少4个字符'));
+			}
+		},
+	
+		onSubmit: function onSubmit() {
+			var _this2 = this;
+	
+			this.props.form.validateFields({ force: true }, function (error) {
+				if (!error) {
+					var _data = Object.assign(_this2.props.form.getFieldsValue(), { a: 10, b: 21 });
+					console.log(_data);
+				} else {
+					// alert('校验失败');
+				}
+			});
+	
+			var data = Object.assign(this.props.form.getFieldsValue(), this.state.pic);
+			console.log(data);
 		}
 	});
 	
@@ -69063,6 +69274,845 @@ webpackJsonp([0,1],[
 	
 	})));
 
+
+/***/ },
+/* 678 */,
+/* 679 */,
+/* 680 */,
+/* 681 */,
+/* 682 */,
+/* 683 */,
+/* 684 */,
+/* 685 */,
+/* 686 */,
+/* 687 */,
+/* 688 */,
+/* 689 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	// export this package's api
+	module.exports = __webpack_require__(690);
+
+/***/ },
+/* 690 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends2 = __webpack_require__(400);
+	
+	var _extends3 = _interopRequireDefault(_extends2);
+	
+	var _react = __webpack_require__(6);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _AjaxUploader = __webpack_require__(691);
+	
+	var _AjaxUploader2 = _interopRequireDefault(_AjaxUploader);
+	
+	var _IframeUploader = __webpack_require__(694);
+	
+	var _IframeUploader2 = _interopRequireDefault(_IframeUploader);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	function empty() {}
+	
+	var Upload = _react2["default"].createClass({
+	  displayName: 'Upload',
+	
+	  propTypes: {
+	    component: _react.PropTypes.string,
+	    style: _react.PropTypes.object,
+	    prefixCls: _react.PropTypes.string,
+	    action: _react.PropTypes.string,
+	    name: _react.PropTypes.string,
+	    multipart: _react.PropTypes.bool,
+	    onError: _react.PropTypes.func,
+	    onSuccess: _react.PropTypes.func,
+	    onProgress: _react.PropTypes.func,
+	    onStart: _react.PropTypes.func,
+	    data: _react.PropTypes.oneOfType([_react.PropTypes.object, _react.PropTypes.func]),
+	    headers: _react.PropTypes.object,
+	    accept: _react.PropTypes.string,
+	    multiple: _react.PropTypes.bool,
+	    disabled: _react.PropTypes.bool,
+	    beforeUpload: _react.PropTypes.func,
+	    customRequest: _react.PropTypes.func,
+	    onReady: _react.PropTypes.func,
+	    withCredentials: _react.PropTypes.bool,
+	    supportServerRender: _react.PropTypes.bool
+	  },
+	
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      component: 'span',
+	      prefixCls: 'rc-upload',
+	      data: {},
+	      headers: {},
+	      name: 'file',
+	      multipart: false,
+	      onProgress: empty,
+	      onReady: empty,
+	      onStart: empty,
+	      onError: empty,
+	      onSuccess: empty,
+	      supportServerRender: false,
+	      multiple: false,
+	      beforeUpload: null,
+	      customRequest: null,
+	      withCredentials: false
+	    };
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      Component: null
+	    };
+	  },
+	  componentDidMount: function componentDidMount() {
+	    if (this.props.supportServerRender) {
+	      /* eslint react/no-did-mount-set-state:0 */
+	      this.setState({
+	        Component: this.getComponent()
+	      }, this.props.onReady);
+	    }
+	  },
+	  getComponent: function getComponent() {
+	    return typeof FormData !== 'undefined' ? _AjaxUploader2["default"] : _IframeUploader2["default"];
+	  },
+	  abort: function abort(file) {
+	    this.refs.inner.abort(file);
+	  },
+	  render: function render() {
+	    if (this.props.supportServerRender) {
+	      var _Component = this.state.Component;
+	
+	      if (_Component) {
+	        return _react2["default"].createElement(_Component, (0, _extends3["default"])({}, this.props, { ref: 'inner' }));
+	      }
+	      return null;
+	    }
+	    var Component = this.getComponent();
+	    return _react2["default"].createElement(Component, (0, _extends3["default"])({}, this.props, { ref: 'inner' }));
+	  }
+	});
+	
+	exports["default"] = Upload;
+	module.exports = exports['default'];
+
+/***/ },
+/* 691 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends2 = __webpack_require__(400);
+	
+	var _extends3 = _interopRequireDefault(_extends2);
+	
+	var _defineProperty2 = __webpack_require__(244);
+	
+	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+	
+	var _react = __webpack_require__(6);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _classnames = __webpack_require__(326);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _request = __webpack_require__(692);
+	
+	var _request2 = _interopRequireDefault(_request);
+	
+	var _uid = __webpack_require__(693);
+	
+	var _uid2 = _interopRequireDefault(_uid);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	/* eslint react/no-is-mounted:0*/
+	
+	var AjaxUploader = _react2["default"].createClass({
+	  displayName: 'AjaxUploader',
+	
+	  propTypes: {
+	    component: _react.PropTypes.string,
+	    style: _react.PropTypes.object,
+	    prefixCls: _react.PropTypes.string,
+	    className: _react.PropTypes.string,
+	    multiple: _react.PropTypes.bool,
+	    disabled: _react.PropTypes.bool,
+	    accept: _react.PropTypes.string,
+	    children: _react.PropTypes.any,
+	    onStart: _react.PropTypes.func,
+	    data: _react.PropTypes.oneOfType([_react.PropTypes.object, _react.PropTypes.func]),
+	    headers: _react.PropTypes.object,
+	    beforeUpload: _react.PropTypes.func,
+	    customRequest: _react.PropTypes.func,
+	    withCredentials: _react.PropTypes.bool
+	  },
+	
+	  getInitialState: function getInitialState() {
+	    this.reqs = {};
+	    return {
+	      uid: (0, _uid2["default"])()
+	    };
+	  },
+	  componentWillUnmount: function componentWillUnmount() {
+	    this.abort();
+	  },
+	  onChange: function onChange(e) {
+	    var files = e.target.files;
+	    this.uploadFiles(files);
+	    this.reset();
+	  },
+	  onClick: function onClick() {
+	    var el = this.refs.file;
+	    if (!el) {
+	      return;
+	    }
+	    el.click();
+	  },
+	  onKeyDown: function onKeyDown(e) {
+	    if (e.key === 'Enter') {
+	      this.onClick();
+	    }
+	  },
+	  onFileDrop: function onFileDrop(e) {
+	    if (e.type === 'dragover') {
+	      e.preventDefault();
+	      return;
+	    }
+	
+	    var files = e.dataTransfer.files;
+	    this.uploadFiles(files);
+	
+	    e.preventDefault();
+	  },
+	  uploadFiles: function uploadFiles(files) {
+	    var postFiles = Array.prototype.slice.call(files);
+	    var len = postFiles.length;
+	    for (var i = 0; i < len; i++) {
+	      var file = postFiles[i];
+	      file.uid = (0, _uid2["default"])();
+	      this.upload(file, postFiles);
+	    }
+	  },
+	  upload: function upload(file, fileList) {
+	    var _this = this;
+	
+	    var props = this.props;
+	
+	    if (!props.beforeUpload) {
+	      // always async in case use react state to keep fileList
+	      return setTimeout(function () {
+	        return _this.post(file);
+	      }, 0);
+	    }
+	
+	    var before = props.beforeUpload(file, fileList);
+	    if (before && before.then) {
+	      before.then(function (processedFile) {
+	        var processedFileType = Object.prototype.toString.call(processedFile);
+	        if (processedFileType === '[object File]' || processedFileType === '[object Blob]') {
+	          _this.post(processedFile);
+	        } else {
+	          _this.post(file);
+	        }
+	      });
+	    } else if (before !== false) {
+	      setTimeout(function () {
+	        return _this.post(file);
+	      }, 0);
+	    }
+	  },
+	  post: function post(file) {
+	    var _this2 = this;
+	
+	    if (!this.isMounted()) {
+	      return;
+	    }
+	    var props = this.props;
+	    var data = props.data;
+	    var onStart = props.onStart;
+	
+	    if (typeof data === 'function') {
+	      data = data(file);
+	    }
+	    var uid = file.uid;
+	
+	    var request = props.customRequest || _request2["default"];
+	    this.reqs[uid] = request({
+	      action: props.action,
+	      filename: props.name,
+	      file: file,
+	      data: data,
+	      headers: props.headers,
+	      withCredentials: props.withCredentials,
+	      onProgress: function onProgress(e) {
+	        props.onProgress(e, file);
+	      },
+	      onSuccess: function onSuccess(ret) {
+	        delete _this2.reqs[uid];
+	        props.onSuccess(ret, file);
+	      },
+	      onError: function onError(err, ret) {
+	        delete _this2.reqs[uid];
+	        props.onError(err, ret, file);
+	      }
+	    });
+	    onStart(file);
+	  },
+	  reset: function reset() {
+	    this.setState({
+	      uid: (0, _uid2["default"])()
+	    });
+	  },
+	  abort: function abort(file) {
+	    var reqs = this.reqs;
+	
+	    if (file) {
+	      var uid = file;
+	      if (file && file.uid) {
+	        uid = file.uid;
+	      }
+	      if (reqs[uid]) {
+	        reqs[uid].abort();
+	        delete reqs[uid];
+	      }
+	    } else {
+	      Object.keys(reqs).forEach(function (uid) {
+	        reqs[uid].abort();
+	        delete reqs[uid];
+	      });
+	    }
+	  },
+	  render: function render() {
+	    var _classNames;
+	
+	    var _props = this.props,
+	        Tag = _props.component,
+	        prefixCls = _props.prefixCls,
+	        className = _props.className,
+	        disabled = _props.disabled,
+	        style = _props.style,
+	        multiple = _props.multiple,
+	        accept = _props.accept,
+	        children = _props.children;
+	
+	    var cls = (0, _classnames2["default"])((_classNames = {}, (0, _defineProperty3["default"])(_classNames, prefixCls, true), (0, _defineProperty3["default"])(_classNames, prefixCls + '-disabled', disabled), (0, _defineProperty3["default"])(_classNames, className, className), _classNames));
+	    var events = disabled ? {} : {
+	      onClick: this.onClick,
+	      onKeyDown: this.onKeyDown,
+	      onDrop: this.onFileDrop,
+	      onDragOver: this.onFileDrop,
+	      tabIndex: '0'
+	    };
+	    return _react2["default"].createElement(
+	      Tag,
+	      (0, _extends3["default"])({}, events, {
+	        className: cls,
+	        role: 'button',
+	        style: style
+	      }),
+	      _react2["default"].createElement('input', {
+	        type: 'file',
+	        ref: 'file',
+	        key: this.state.uid,
+	        style: { display: 'none' },
+	        accept: accept,
+	        multiple: multiple,
+	        onChange: this.onChange
+	      }),
+	      children
+	    );
+	  }
+	});
+	
+	exports["default"] = AjaxUploader;
+	module.exports = exports['default'];
+
+/***/ },
+/* 692 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = upload;
+	function getError(option, xhr) {
+	  var msg = 'cannot post ' + option.action + ' ' + xhr.status + '\'';
+	  var err = new Error(msg);
+	  err.status = xhr.status;
+	  err.method = 'post';
+	  err.url = option.action;
+	  return err;
+	}
+	
+	function getBody(xhr) {
+	  var text = xhr.responseText || xhr.response;
+	  if (!text) {
+	    return text;
+	  }
+	
+	  try {
+	    return JSON.parse(text);
+	  } catch (e) {
+	    return text;
+	  }
+	}
+	
+	// option {
+	//  onProgress: (event: { percent: number }): void,
+	//  onError: (event: Error, body?: Object): void,
+	//  onSuccess: (body: Object): void,
+	//  data: Object,
+	//  filename: String,
+	//  file: File,
+	//  withCredentials: Boolean,
+	//  action: String,
+	//  headers: Object,
+	// }
+	function upload(option) {
+	  var xhr = new XMLHttpRequest();
+	  if (xhr.upload) {
+	    xhr.upload.onprogress = function progress(e) {
+	      if (e.total > 0) {
+	        e.percent = e.loaded / e.total * 100;
+	      }
+	      option.onProgress(e);
+	    };
+	  }
+	
+	  var formData = new FormData();
+	
+	  if (option.data) {
+	    Object.keys(option.data).map(function (key) {
+	      formData.append(key, option.data[key]);
+	    });
+	  }
+	
+	  formData.append(option.filename, option.file);
+	
+	  xhr.onerror = function error(e) {
+	    option.onError(e);
+	  };
+	
+	  xhr.onload = function onload() {
+	    // allow success when 2xx status
+	    // see https://github.com/react-component/upload/issues/34
+	    if (xhr.status < 200 || xhr.status >= 300) {
+	      return option.onError(getError(option, xhr), getBody(xhr));
+	    }
+	
+	    option.onSuccess(getBody(xhr));
+	  };
+	
+	  xhr.open('post', option.action, true);
+	
+	  // Has to be after `.open()`. See https://github.com/enyo/dropzone/issues/179
+	  if (option.withCredentials && 'withCredentials' in xhr) {
+	    xhr.withCredentials = true;
+	  }
+	
+	  var headers = option.headers || {};
+	
+	  // when set headers['X-Requested-With'] = null , can close default XHR header
+	  // see https://github.com/react-component/upload/issues/33
+	  if (headers['X-Requested-With'] !== null) {
+	    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+	  }
+	
+	  for (var h in headers) {
+	    if (headers.hasOwnProperty(h) && headers[h] !== null) {
+	      xhr.setRequestHeader(h, headers[h]);
+	    }
+	  }
+	  xhr.send(formData);
+	
+	  return {
+	    abort: function abort() {
+	      xhr.abort();
+	    }
+	  };
+	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 693 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = uid;
+	var now = +new Date();
+	var index = 0;
+	
+	function uid() {
+	  return "rc-upload-" + now + "-" + ++index;
+	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 694 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _defineProperty2 = __webpack_require__(244);
+	
+	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+	
+	var _extends2 = __webpack_require__(400);
+	
+	var _extends3 = _interopRequireDefault(_extends2);
+	
+	var _react = __webpack_require__(6);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(39);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _classnames = __webpack_require__(326);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _uid = __webpack_require__(693);
+	
+	var _uid2 = _interopRequireDefault(_uid);
+	
+	var _warning = __webpack_require__(695);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	var IFRAME_STYLE = {
+	  position: 'absolute',
+	  top: 0,
+	  opacity: 0,
+	  filter: 'alpha(opacity=0)',
+	  left: 0,
+	  zIndex: 9999
+	};
+	
+	// diferent from AjaxUpload, can only upload on at one time, serial seriously
+	var IframeUploader = _react2["default"].createClass({
+	  displayName: 'IframeUploader',
+	
+	  propTypes: {
+	    component: _react.PropTypes.string,
+	    style: _react.PropTypes.object,
+	    disabled: _react.PropTypes.bool,
+	    prefixCls: _react.PropTypes.string,
+	    className: _react.PropTypes.string,
+	    accept: _react.PropTypes.string,
+	    onStart: _react.PropTypes.func,
+	    multiple: _react.PropTypes.bool,
+	    children: _react.PropTypes.any,
+	    data: _react.PropTypes.oneOfType([_react.PropTypes.object, _react.PropTypes.func]),
+	    action: _react.PropTypes.string,
+	    name: _react.PropTypes.string
+	  },
+	
+	  getInitialState: function getInitialState() {
+	    this.file = {};
+	    return {
+	      uploading: false
+	    };
+	  },
+	  componentDidMount: function componentDidMount() {
+	    this.updateIframeWH();
+	    this.initIframe();
+	  },
+	  componentDidUpdate: function componentDidUpdate() {
+	    this.updateIframeWH();
+	  },
+	  onLoad: function onLoad() {
+	    if (!this.state.uploading) {
+	      return;
+	    }
+	    var props = this.props,
+	        file = this.file;
+	
+	    var response = void 0;
+	    try {
+	      var doc = this.getIframeDocument();
+	      var script = doc.getElementsByTagName('script')[0];
+	      if (script && script.parentNode === doc.body) {
+	        doc.body.removeChild(script);
+	      }
+	      response = doc.body.innerHTML;
+	      props.onSuccess(response, file);
+	    } catch (err) {
+	      (0, _warning2["default"])(false, 'cross domain error for Upload. Maybe server should return document.domain script. see Note from https://github.com/react-component/upload');
+	      response = 'cross-domain';
+	      props.onError(err, null, file);
+	    }
+	    this.endUpload();
+	  },
+	  onChange: function onChange() {
+	    var _this = this;
+	
+	    var target = this.getFormInputNode();
+	    // ie8/9 don't support FileList Object
+	    // http://stackoverflow.com/questions/12830058/ie8-input-type-file-get-files
+	    var file = this.file = {
+	      uid: (0, _uid2["default"])(),
+	      name: target.value
+	    };
+	    this.startUpload();
+	    var props = this.props;
+	
+	    if (!props.beforeUpload) {
+	      return this.post(file);
+	    }
+	    var before = props.beforeUpload(file);
+	    if (before && before.then) {
+	      before.then(function () {
+	        _this.post(file);
+	      }, function () {
+	        _this.endUpload();
+	      });
+	    } else if (before !== false) {
+	      this.post(file);
+	    } else {
+	      this.endUpload();
+	    }
+	  },
+	  getIframeNode: function getIframeNode() {
+	    return this.refs.iframe;
+	  },
+	  getIframeDocument: function getIframeDocument() {
+	    return this.getIframeNode().contentDocument;
+	  },
+	  getFormNode: function getFormNode() {
+	    return this.getIframeDocument().getElementById('form');
+	  },
+	  getFormInputNode: function getFormInputNode() {
+	    return this.getIframeDocument().getElementById('input');
+	  },
+	  getFormDataNode: function getFormDataNode() {
+	    return this.getIframeDocument().getElementById('data');
+	  },
+	  getFileForMultiple: function getFileForMultiple(file) {
+	    return this.props.multiple ? [file] : file;
+	  },
+	  getIframeHTML: function getIframeHTML(domain) {
+	    var domainScript = '';
+	    var domainInput = '';
+	    if (domain) {
+	      domainScript = '<script>document.domain="' + domain + '";</script>';
+	      domainInput = '<input name="_documentDomain" value="' + domain + '" />';
+	    }
+	    return '\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <meta http-equiv="X-UA-Compatible" content="IE=edge" />\n    <style>\n    body,html {padding:0;margin:0;border:0;overflow:hidden;}\n    </style>\n    ' + domainScript + '\n    </head>\n    <body>\n    <form method="post"\n    encType="multipart/form-data"\n    action="' + this.props.action + '" id="form"\n    style="display:block;height:9999px;position:relative;overflow:hidden;">\n    <input id="input" type="file"\n     name="' + this.props.name + '"\n     style="position:absolute;top:0;right:0;height:9999px;font-size:9999px;cursor:pointer;"/>\n    ' + domainInput + '\n    <span id="data"></span>\n    </form>\n    </body>\n    </html>\n    ';
+	  },
+	  initIframeSrc: function initIframeSrc() {
+	    if (this.domain) {
+	      this.getIframeNode().src = 'javascript:void((function(){\n        var d = document;\n        d.open();\n        d.domain=\'' + this.domain + '\';\n        d.write(\'\');\n        d.close();\n      })())';
+	    }
+	  },
+	  initIframe: function initIframe() {
+	    var iframeNode = this.getIframeNode();
+	    var win = iframeNode.contentWindow;
+	    var doc = void 0;
+	    this.domain = this.domain || '';
+	    this.initIframeSrc();
+	    try {
+	      doc = win.document;
+	    } catch (e) {
+	      this.domain = document.domain;
+	      this.initIframeSrc();
+	      win = iframeNode.contentWindow;
+	      doc = win.document;
+	    }
+	    doc.open('text/html', 'replace');
+	    doc.write(this.getIframeHTML(this.domain));
+	    doc.close();
+	    this.getFormInputNode().onchange = this.onChange;
+	  },
+	  endUpload: function endUpload() {
+	    if (this.state.uploading) {
+	      this.file = {};
+	      // hack avoid batch
+	      this.state.uploading = false;
+	      this.setState({
+	        uploading: false
+	      });
+	      this.initIframe();
+	    }
+	  },
+	  startUpload: function startUpload() {
+	    if (!this.state.uploading) {
+	      this.state.uploading = true;
+	      this.setState({
+	        uploading: true
+	      });
+	    }
+	  },
+	  updateIframeWH: function updateIframeWH() {
+	    var rootNode = _reactDom2["default"].findDOMNode(this);
+	    var iframeNode = this.getIframeNode();
+	    iframeNode.style.height = rootNode.offsetHeight + 'px';
+	    iframeNode.style.width = rootNode.offsetWidth + 'px';
+	  },
+	  abort: function abort(file) {
+	    if (file) {
+	      var uid = file;
+	      if (file && file.uid) {
+	        uid = file.uid;
+	      }
+	      if (uid === this.file.uid) {
+	        this.endUpload();
+	      }
+	    } else {
+	      this.endUpload();
+	    }
+	  },
+	  post: function post(file) {
+	    var formNode = this.getFormNode();
+	    var dataSpan = this.getFormDataNode();
+	    var data = this.props.data;
+	    var onStart = this.props.onStart;
+	
+	    if (typeof data === 'function') {
+	      data = data(file);
+	    }
+	    var inputs = [];
+	    for (var key in data) {
+	      if (data.hasOwnProperty(key)) {
+	        inputs.push('<input name="' + key + '" value="' + data[key] + '"/>');
+	      }
+	    }
+	    dataSpan.innerHTML = inputs.join('');
+	    formNode.submit();
+	    dataSpan.innerHTML = '';
+	    onStart(file);
+	  },
+	  render: function render() {
+	    var _classNames;
+	
+	    var _props = this.props,
+	        Tag = _props.component,
+	        disabled = _props.disabled,
+	        className = _props.className,
+	        prefixCls = _props.prefixCls,
+	        children = _props.children,
+	        style = _props.style;
+	
+	    var iframeStyle = (0, _extends3["default"])({}, IFRAME_STYLE, {
+	      display: this.state.uploading || disabled ? 'none' : ''
+	    });
+	    var cls = (0, _classnames2["default"])((_classNames = {}, (0, _defineProperty3["default"])(_classNames, prefixCls, true), (0, _defineProperty3["default"])(_classNames, prefixCls + '-disabled', disabled), (0, _defineProperty3["default"])(_classNames, className, className), _classNames));
+	    return _react2["default"].createElement(
+	      Tag,
+	      {
+	        className: cls,
+	        style: (0, _extends3["default"])({ position: 'relative', zIndex: 0 }, style)
+	      },
+	      _react2["default"].createElement('iframe', {
+	        ref: 'iframe',
+	        onLoad: this.onLoad,
+	        style: iframeStyle
+	      }),
+	      children
+	    );
+	  }
+	});
+	
+	exports["default"] = IframeUploader;
+	module.exports = exports['default'];
+
+/***/ },
+/* 695 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+	
+	'use strict';
+	
+	/**
+	 * Similar to invariant but only logs a warning if the condition is not met.
+	 * This can be used to log issues in development environments in critical
+	 * paths. Removing the logging code for production environments will keep the
+	 * same logic and follow the same code paths.
+	 */
+	
+	var warning = function() {};
+	
+	if (process.env.NODE_ENV !== 'production') {
+	  warning = function(condition, format, args) {
+	    var len = arguments.length;
+	    args = new Array(len > 2 ? len - 2 : 0);
+	    for (var key = 2; key < len; key++) {
+	      args[key - 2] = arguments[key];
+	    }
+	    if (format === undefined) {
+	      throw new Error(
+	        '`warning(condition, format, ...args)` requires a warning ' +
+	        'message argument'
+	      );
+	    }
+	
+	    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
+	      throw new Error(
+	        'The warning format should be able to uniquely identify this ' +
+	        'warning. Please, use a more descriptive format than: ' + format
+	      );
+	    }
+	
+	    if (!condition) {
+	      var argIndex = 0;
+	      var message = 'Warning: ' +
+	        format.replace(/%s/g, function() {
+	          return args[argIndex++];
+	        });
+	      if (typeof console !== 'undefined') {
+	        console.error(message);
+	      }
+	      try {
+	        // This error was thrown as a convenience so that you can use this stack
+	        // to find the callsite that caused this warning to fire.
+	        throw new Error(message);
+	      } catch(x) {}
+	    }
+	  };
+	}
+	
+	module.exports = warning;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }
 ]);
