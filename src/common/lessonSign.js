@@ -270,13 +270,14 @@ let Form =React.createClass({
 		  	const data= Object.assign(this.props.form.getFieldsValue(),{a:10,b:21});
 		    console.log(data);
 		  } else {
-		    // alert('校验失败');
+		    alert('校验失败');
 		  }
 		});
 
 		const data= Object.assign(this.props.form.getFieldsValue(),this.state.pic);
 		console.log(data);
-	}
+	},
+
 });
 
 Form=createForm()(Form);
@@ -286,5 +287,11 @@ module.exports=React.createClass({
 		return (<div className="pd10">
 			<Form />
 		</div>)
+	},
+	componentWillMount:function(){
+		console.log(this.props);
+		this.setState({
+			type:this.props.location.query.bar
+		});
 	}
 });

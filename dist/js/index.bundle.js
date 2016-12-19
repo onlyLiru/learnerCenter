@@ -38581,13 +38581,14 @@ webpackJsonp([0,1],[
 					var _data = Object.assign(_this2.props.form.getFieldsValue(), { a: 10, b: 21 });
 					console.log(_data);
 				} else {
-					// alert('校验失败');
+					alert('校验失败');
 				}
 			});
 	
 			var data = Object.assign(this.props.form.getFieldsValue(), this.state.pic);
 			console.log(data);
 		}
+	
 	});
 	
 	Form = (0, _rcForm.createForm)()(Form);
@@ -38601,6 +38602,12 @@ webpackJsonp([0,1],[
 				{ className: 'pd10' },
 				_react2.default.createElement(Form, null)
 			);
+		},
+		componentWillMount: function componentWillMount() {
+			console.log(this.props);
+			this.setState({
+				type: this.props.location.query.bar
+			});
 		}
 	});
 
