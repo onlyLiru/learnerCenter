@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
 var path = require('path');
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var BowerWebpackPlugin = require('bower-webpack-plugin');
@@ -52,23 +53,23 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				loader: 'style-loader!css-loader'
+				loader: 'style-loader!css-loader!postcss-loader'
 			},
 			{
 				test: /\.sass/,
-				loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax'
+				loader: 'style-loader!css-loader!postcss-loader!sass-loader?outputStyle=expanded&indentedSyntax'
 			},
 			{
 				test: /\.scss/,
-				loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
+				loader: 'style-loader!css-loader!postcss-loader!sass-loader?outputStyle=expanded'
 			},
 			{
 				test: /\.less/,
-				loader: 'style-loader!css-loader!less-loader'
+				loader: 'style-loader!css-loader!postcss-loader!less-loader'
 			},
 			{
 				test: /\.styl/,
-				loader: 'style-loader!css-loader!stylus-loader'
+				loader: 'style-loader!css-loader!postcss-loader!stylus-loader'
 			},
 			{
 				test: /\.(png|jpg|gif|woff|woff2)$/,
@@ -80,9 +81,7 @@ module.exports = {
 			}
 		]
 	},
-	postcss: [
-	    require('autoprefixer')
-	],
+	postcss: [ autoprefixer({ browsers: ['last 10 versions'] }) ],
 	devServer: {
 	  contentBase: './',
 	  historyApiFallback: true,

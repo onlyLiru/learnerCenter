@@ -3,6 +3,8 @@ import React from 'react';
 import { List, InputItem, WhiteSpace, Switch, Button, DatePicker, Picker, ImagePicker, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import Upload from 'rc-upload';
+import FileUpload from 'react-fileupload';
+// import ReactUI from 'rctui';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 const Item = List.Item;
@@ -108,6 +110,7 @@ let Form =React.createClass({
 	    			{...getFieldProps('name')}>
 	    			姓名
 	    		</InputItem>
+	    		
 	    		<DatePicker
 		        	mode="date"
 		        	title="选择日期"
@@ -122,6 +125,8 @@ let Form =React.createClass({
 			    <Upload 
 			    	name='file'
 			    	action='upload.json'
+			    	component="div" 
+			    	style={{ display: 'block' }}
 			    	onStart={ (file)=> {
 				    		this.setState({
 				    			pic:{
@@ -246,15 +251,17 @@ let Form =React.createClass({
         		</InputItem>
 	    	</List>
 	    	<WhiteSpace size="lg" />
-	    	<Button type="primary" loading onClick={this.onSubmit}>体验课程</Button>
+	    	{this.state.btn}
 	    </div>)
 	},
 	getInitialState(){
+		const type=this.props.type;
 		return {
 			pic:{
 				picUrl:'http://mall.fancyedu.com/WEB-UED/fancy/img/defaul.png',
 				hasChange:false
-			}
+			},
+			btn:type==1 ? <Button type="primary" loading onClick={this.onSubmit}>体验课程</Button> : <Button type="primary" onClick={this.onSubmit}>立即付费</Button>
 		}
 	},
 	validatePhone(rule, value, callback) {
@@ -285,13 +292,13 @@ Form=createForm()(Form);
 module.exports=React.createClass({
 	render:function(){
 		return (<div className="pd10">
-			<Form />
+			<Form type={this.state.type} />
 		</div>)
 	},
 	componentWillMount:function(){
 		console.log(this.props);
 		this.setState({
-			type:this.props.location.query.bar
+			type:this.props.location.query.type
 		});
 	}
 });
