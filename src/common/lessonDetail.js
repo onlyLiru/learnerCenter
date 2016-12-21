@@ -1,5 +1,4 @@
-require('../css/common.scss');
-import React from "react";
+
 import { Toast, WhiteSpace, WingBlank, Button, List, Picker } from 'antd-mobile';
 import { createForm } from 'rc-form';
 const district=[

@@ -13,7 +13,7 @@ module.exports = {
 		path: path.join(__dirname, '/dist/js/')
 	},
 	cache: false,
-    devtool: 'sourcemap',
+    devtool: false,
     plugins: [
     	commonsPlugin,
 		// new webpack.optimize.DedupePlugin(),
