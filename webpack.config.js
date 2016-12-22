@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
-var BowerWebpackPlugin = require('bower-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
 	port: 8088,
 	publicPath: '/dist/',
@@ -30,7 +30,8 @@ module.exports = {
 		// }),
 		// new webpack.optimize.OccurenceOrderPlugin(),
 		// new webpack.optimize.AggressiveMergingPlugin(),
-		// new webpack.NoErrorsPlugin()
+		// new webpack.NoErrorsPlugin(),
+		new ExtractTextPlugin("styles.css"),
 	],
 	module: {
 		preLoaders: [

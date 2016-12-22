@@ -1,4 +1,4 @@
-
+import React from 'react'
 import { List, InputItem, WhiteSpace, ActivityIndicator, Switch, Button, DatePicker, Picker, ImagePicker, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import moment from 'moment';
