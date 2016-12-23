@@ -12,7 +12,7 @@ class ImgScroll extends React.Component {
 	render() {
 		let imgHtml=this.props.data.map( (d,i)=> {
 			return <div key={i} className="item">
-				<a href={d.link}><img className="autoImg" src={d.img} /></a>
+				<a className="block" href={d.link}><img className="autoImg" src={d.img} /></a>
 			</div>;
 		} );
 		return (<div>

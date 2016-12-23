@@ -10,13 +10,13 @@ p{
 	margin:.2rem 0;
 }
 
+.block{
+	display:block;
+}
 .overflowHidden{
 	overflow:hidden;
 }
 
-.fflex{
-	display:flex;
-}
 .bgColorRed{
 	background-color:$red;
 	color:$white;
@@ -72,6 +72,8 @@ p{
 
 .autoImg, .autoImg img{
 	width:100%;
+	display:block;
+	vertical-align:bottom;
 }
 
 .am-button-primary{
