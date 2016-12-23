@@ -1,13 +1,70 @@
 $red:#e33333;
 $white:#fff;
+$black:#444;
+$borderColor:#ddd;
+$yellow:#FFC300;
+$blue:#0380E0;
+$green:#0AE5BA;
+
+p{
+	margin:.2rem 0;
+}
+
+.overflowHidden{
+	overflow:hidden;
+}
 
 .bgColorRed{
 	background-color:$red;
-	color:#fff;
+	color:$white;
+}
+.bgColorWhite{
+	background-color:$white;
+	color:$black;
+}
+
+.colorRed{
+	color:$red;
+}
+
+.ac{
+	text-align:center;
 }
 
 .pd10{
 	padding:10px;
+}
+
+.title{
+	padding-left:.6rem;
+	padding-bottom:.2rem;
+	margin:.2rem 0;
+	border-bottom:solid 1px $borderColor;
+	position:relative;
+}
+.title:before {
+	content: '.';
+	position:absolute;
+	left:.2rem;
+	top:0;
+	width:.15rem;
+	hieght:100%;
+}
+.title.yellow:before{
+	color:$yellow;
+	background:$yellow;
+}
+.title.blue:before{
+	color:$blue;
+	background:$blue;
+}
+.title.green:before{
+	color:$green;
+	background:$green;
+}
+.title.red:before{
+	color:$red;
+	background:$red;
 }
 
 .autoImg, .autoImg img{
@@ -18,3 +75,7 @@ $white:#fff;
 	background-color:$red;
 	border-color:$red;
 }
+.noDot div[class^="slider-decorator"]{
+	display:none!important;
+}
+

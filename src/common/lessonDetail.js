@@ -136,12 +136,20 @@ module.exports=React.createClass({
 			    <WhiteSpace size="sm" />
 			    <Button onClick={this.signBtnClick} className="bgColorRed">开始报名</Button>
 			</WingBlank>
-        </div>) 
+        </div>)
 	},
 	componentDidMount:function () {
 		this.setState({
-			content:'<div><img src="http://img.fancyedu.com/sys/ic/operation/1476436649079_1_30.jpg"/>如果能知道用户的等待时间，可以使用组件 Progress 来替代。\
-			可通过控制 ActivityIndicator 运动的快慢，来表明进程处理的速度。</div>'
+			content:`<p style="color:#333333;font-family:Arial, &quot;font-size:14px;">
+  <strong><span style="line-height:21px;">第一篇：父母就是孩子的“镜子”</span></strong>
+</p>
+<p style="color:#333333;font-family:Arial, &quot;font-size:14px;">
+  <span style="line-height:21px;"> 母蟹对小蟹说：“孩子，你怎么老是横着爬，为什么不能直着走呢？”小蟹委屈地答道：“妈妈，我是照着您的样子走的呀。”这是说，母亲必须正直地生活，正直地做人、行事，才能正确引导孩子。</span>
+</p>
+<p style="color:#333333;font-family:Arial, &quot;font-size:14px;">
+  <span style="line-height:21px;"><img src="http://img.fancyedu.com/sys/ic/operation/1482377088291_banner1.png" alt="" /><br />
+</span>
+</p></div>`
 		});
 	}
 });
