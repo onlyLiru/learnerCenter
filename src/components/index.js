@@ -169,13 +169,13 @@ const Index= React.createClass({
 					],
 				gardenEnjoy:[{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612'
+						link:'ngProject?id=0'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377109011_DK.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612'
+						link:'ngProject?id=1'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612'
+						link:'ngProject?id=2'
 					}],
 				bookCategory:[{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377020458_（1）0-3.png',
@@ -251,17 +251,12 @@ const Index= React.createClass({
 	},
 	render:function(){
 		return (<div>
-			<div className="barNav">
-				这里是标题
-			</div>
-			<div className="content">
-				<ImgScroll data={this.state.data.banner} />
-				<GridImgNav data={this.state.data.gardenEnjoy} />
-				<WhiteSpace size="md" />
-				<GridIconNav data={this.state.data.bookCategory} />
-				<WhiteSpace size="md" />
-				<GoodsList data={this.state.data.goodsList} />
-			</div>
+			<ImgScroll data={this.state.data.banner} />
+			<GridImgNav data={this.state.data.gardenEnjoy} />
+			<WhiteSpace size="md" />
+			<GridIconNav data={this.state.data.bookCategory} />
+			<WhiteSpace size="md" />
+			<GoodsList data={this.state.data.goodsList} />
 		</div>)
 	}
 });

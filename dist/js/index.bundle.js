@@ -27015,13 +27015,13 @@ webpackJsonp([0,1],[
 					}],
 					gardenEnjoy: [{
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612'
+						link: 'ngProject?id=0'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377109011_DK.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612'
+						link: 'ngProject?id=1'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612'
+						link: 'ngProject?id=2'
 					}],
 					bookCategory: [{
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377020458_（1）0-3.png',
@@ -27095,21 +27095,12 @@ webpackJsonp([0,1],[
 			return _react2.default.createElement(
 				'div',
 				null,
-				_react2.default.createElement(
-					'div',
-					{ className: 'barNav' },
-					'\u8FD9\u91CC\u662F\u6807\u9898'
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'content' },
-					_react2.default.createElement(ImgScroll, { data: this.state.data.banner }),
-					_react2.default.createElement(GridImgNav, { data: this.state.data.gardenEnjoy }),
-					_react2.default.createElement(_whiteSpace2.default, { size: 'md' }),
-					_react2.default.createElement(GridIconNav, { data: this.state.data.bookCategory }),
-					_react2.default.createElement(_whiteSpace2.default, { size: 'md' }),
-					_react2.default.createElement(GoodsList, { data: this.state.data.goodsList })
-				)
+				_react2.default.createElement(ImgScroll, { data: this.state.data.banner }),
+				_react2.default.createElement(GridImgNav, { data: this.state.data.gardenEnjoy }),
+				_react2.default.createElement(_whiteSpace2.default, { size: 'md' }),
+				_react2.default.createElement(GridIconNav, { data: this.state.data.bookCategory }),
+				_react2.default.createElement(_whiteSpace2.default, { size: 'md' }),
+				_react2.default.createElement(GoodsList, { data: this.state.data.goodsList })
 			);
 		}
 	});
@@ -32320,8 +32311,9 @@ webpackJsonp([0,1],[
 
 
 		getInitialState: function getInitialState() {
+			var id = parseInt(this.props.location.query.id);
 			return {
-				curIndex: 0,
+				curIndex: id,
 				data: {
 					ngkids: {
 						topImg: [{

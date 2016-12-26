@@ -16,8 +16,9 @@ class Img extends React.Component{
 const NgProject= React.createClass({
 
 	getInitialState:function() {
+		const id =parseInt(this.props.location.query.id);
 		return {
-			curIndex:0,
+			curIndex:id,
 			data: {
 				ngkids:{
 					topImg:[{
@@ -101,7 +102,8 @@ const NgProject= React.createClass({
 		this.setState({
 			curIndex:index
 		});
-	}
+	},
+	
 });
 
 export { NgProject };
