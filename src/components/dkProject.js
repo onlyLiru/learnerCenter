@@ -1,5 +1,5 @@
 import React from 'react';
-import { SegmentedControl, ListView,WhiteSpace } from 'antd-mobile'
+import { SegmentedControl, ListView,WhiteSpace,Flex } from 'antd-mobile'
 
 class Img extends React.Component{
 	render() {
@@ -58,43 +58,42 @@ const GoodsList = React.createClass({
 		if (index > data.length-1) {
 			index = 0;
 		}
-    	const obj = data[index++];
+    	const d = data[index++];
     	return (
 	        <div key={rowID}
 				style={{
-					padding: '0.16rem',
+					padding: '0.16rem .16rem .2rem',
+					marginTop:'.2rem',
+					boxSizing:'border-box',
 					backgroundColor: '#FEF150',
 					borderRadius:'.2rem',
-					margin:'.12rem'
+					width:'48%',
+					float:rowID % 2 == 0 ? 'left' :'right'
 				}}
 	        >
-				<div style={{ display: '-webkit-box', display: 'flex' }}>
-					<a className="block" style={{ width:'55%', marginRight: '0.2rem' }} href={obj.link}>
-						<img className="autoImg" src={obj.img} />
-					</a>
-					<div style={{ display: 'inline-block',width:'45%',position:'relative' }}>
-						<p style={{position:'absolute',top:'0',left:'0'}} className="line3">{obj.des}</p>
-						<div className="ac" style={{position:'absolute',bottom:'.2rem',left:'0',width:'100%'}}>
-							<WhiteSpace size='md' />
-							<span style={{ fontSize: '1.6em', color: '#FF6E27' }}>
-								¥{obj.price}
-							</span>
-							<a style={{
-							    display:'inline-block',
-							    width:'100%',
-							    lineHeight:'0.6rem',
-							    backgroundColor:'#FF5069',
-							    fontWeight:'bold',
-							    fontSize:'.34rem',
-							    borderRadius:'0.4rem',
-							    color:'#FDFC4C',
-							    boxShadow:'2px 4px #E4034C'
-							  }}
-							  href={obj.link}
-							>立即购买</a>
-						</div>
-					</div>
-				</div>
+				<a className="block" href={d.link}><img className="autoImg" src={d.img} /></a>
+                  <WhiteSpace size='md' />
+                  <Flex justify="around">
+                    <Flex.Item className="line1" style={{flex:'3'}}>
+                      {d.title}
+                    </Flex.Item>
+                    <Flex.Item className="colorRed" style={{textAlign:'right'}}>¥{d.price}</Flex.Item>
+                  </Flex>
+                  <WhiteSpace size='md' />
+                  <a style={{
+                      display:'inline-block',
+                      width:'100%',
+                      textAlign:'center',
+                      lineHeight:'0.6rem',
+                      backgroundColor:'#FF5069',
+                      fontWeight:'bold',
+                      fontSize:'.34rem',
+                      borderRadius:'0.4rem',
+                      color:'#FDFC4C',
+                      boxShadow:'2px 4px #E4034C'
+                    }}
+                    href={d.link}
+                  >立即购买</a>
 			</div>);
     };
     return (
@@ -117,43 +116,30 @@ const GoodsList = React.createClass({
   },
 });
 
-const NgProject= React.createClass({
+const DkProject= React.createClass({
 
 	getInitialState:function() {
 		const id =parseInt(this.props.location.query.id);
 		return {
 			curIndex:id,
-			bgColor:'#015080',
+			bgColor:'#424785',
 			data: {
-				ngkids:{
+				drawing:{
 					topImg:[{
-						img:'http://img.fancyedu.com/sys/ic/operation/1482724922513_dd.jpg',
-						link:'disney'
-					}]
-				},
-				ourWorld:{
-					topImg:[{
-						img:'http://img.fancyedu.com/sys/ic/operation/1482724979742_OUR WOLRD.jpg',
+						img:'http://img.fancyedu.com/sys/ic/operation/1482724959997_k.jpg',
 						link:'disney'
 					}],
 					listData : [
 						  {
-						    img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-						    title: '美国国家地理our world 英文原版绘本 level4(全9册)',
-						    des: '美国国家地理our world 英文原版绘本 level4(全9册)',
+						    img: 'http://img.fancyedu.com/sys/ic/operation/1482725388929_OWR_G5U8_TailorCoat_CVR-1.png',
+						    title: '相约酒店',
+						    des: '不是所有的兼职汪都需要风吹日晒',
 						    price:'288',
 						    link:'disney'
 						  },
 						  {
-						    img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
+						    img: 'http://img.fancyedu.com/sys/ic/operation/1482725382444_OWR_G4U9_TugOfWar_CVR_CP-1.png',
 						    title: '麦当劳邀您过周末',
-						    des: '不是所有的兼职汪都需要风吹日晒',
-						    price:'288',
-						    link:''
-						  },
-						  {
-						    img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
-						    title: '食惠周',
 						    des: '不是所有的兼职汪都需要风吹日晒',
 						    price:'288',
 						    link:'disney'
@@ -162,7 +148,7 @@ const NgProject= React.createClass({
 				},
 				science:{
 					topImg:[{
-						img:'http://img.fancyedu.com/sys/ic/operation/1482724988266_Science.jpg',
+						img:'http://img.fancyedu.com/sys/ic/operation/1482724970053_w.jpg',
 						link:'disney'
 					}],
 					listData : [
@@ -190,10 +176,10 @@ const NgProject= React.createClass({
 		const Tab = () => {
 			return <div className="barNav" style={{padding:'.2rem .2rem 0',backgroundColor:this.state.bgColor}}>
 				<SegmentedControl
-		          values={['环球少年', 'Our World', 'Science']}
+		          values={['彩绘名著科普', '有趣的科学']}
 		          onChange={ this.change }
 		          selectedIndex={this.state.curIndex}
-		          className='ngProjectTab'
+		          className='dkProjectTab'
 		        />
 			</div>
 		};
@@ -211,7 +197,10 @@ const NgProject= React.createClass({
 					return <div style={{ backgroundColor:this.state.bgColor }}>
 						<Tab />
 						<div className='content' style={{paddingTop:'1.2rem'}}>
-							<Img data={this.state.data.ngkids.topImg} />
+							<Img data={this.state.data.drawing.topImg} />
+							<div className="clearfix" style={{padding:'0 .2rem'}}>
+								<GoodsList data={ this.state.data.drawing.listData } />
+							</div>
 						</div>
 					</div>
 				};
@@ -221,19 +210,10 @@ const NgProject= React.createClass({
 					return <div style={{ backgroundColor:this.state.bgColor }}>
 						<Tab />
 						<div className='content' style={{paddingTop:'1.2rem'}}>
-							<Img data={this.state.data.ourWorld.topImg} />
-							<GoodsList data={ this.state.data.ourWorld.listData } />
-						</div>
-					</div> 
-				};
-				break;
-			case 2 :
-				Page = ()=> { 
-					return <div style={{ backgroundColor:this.state.bgColor }}>
-						<Tab />
-						<div className='content' style={{paddingTop:'1.2rem'}}>
 							<Img data={this.state.data.science.topImg} />
-							<GoodsList data={ this.state.data.science.listData } />
+							<div className="clearfix" style={{padding:'0 .2rem'}}>
+								<GoodsList data={ this.state.data.science.listData } />
+							</div>
 						</div>
 					</div> 
 				};
@@ -253,4 +233,4 @@ const NgProject= React.createClass({
 	
 });
 
-export { NgProject };
+export { DkProject };
