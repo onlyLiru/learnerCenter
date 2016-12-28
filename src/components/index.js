@@ -164,18 +164,18 @@ const Index= React.createClass({
 				banner:[
 						{
 							img:'http://img.fancyedu.com/sys/ic/operation/1482377088291_banner1.png',
-							link:'lessonDetail'
+							link:'rct/lessonDetail'
 						}
 					],
 				gardenEnjoy:[{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link:'ngProject?id=0'
+						link:'rct/ngProject?id=0'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377109011_DK.png',
-						link:'ngProject?id=1'
+						link:'rct/ngProject?id=1'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link:'ngProject?id=2'
+						link:'rct/ngProject?id=2'
 					}],
 				bookCategory:[{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377020458_（1）0-3.png',
@@ -220,7 +220,7 @@ const Index= React.createClass({
 						],
 						banner:{
 							img:'http://img.fancyedu.com/sys/ic/operation/1482377094829_banner2.png',
-							link:'disney'
+							link:'rct/disney'
 						},
 						title:{
 							name:'热门推荐',

@@ -24,9 +24,9 @@ webpackJsonp([0,1],[
 
 	var _disney = __webpack_require__(416);
 
-	var _imgList = __webpack_require__(419);
+	var _imgList = __webpack_require__(417);
 
-	__webpack_require__(417);
+	__webpack_require__(418);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47,7 +47,7 @@ webpackJsonp([0,1],[
 	  { history: _reactRouter.browserHistory },
 	  _react2.default.createElement(
 	    _reactRouter.Route,
-	    { path: '/', component: App },
+	    { path: 'rct', component: App },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _index.Index }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'disney', component: _disney.Disney }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'ngProject', component: _ngProject.NgProject }),
@@ -29334,17 +29334,17 @@ webpackJsonp([0,1],[
 				data: {
 					banner: [{
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377088291_banner1.png',
-						link: 'lessonDetail'
+						link: 'rct/lessonDetail'
 					}],
 					gardenEnjoy: [{
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link: 'ngProject?id=0'
+						link: 'rct/ngProject?id=0'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377109011_DK.png',
-						link: 'ngProject?id=1'
+						link: 'rct/ngProject?id=1'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link: 'ngProject?id=2'
+						link: 'rct/ngProject?id=2'
 					}],
 					bookCategory: [{
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377020458_（1）0-3.png',
@@ -29387,7 +29387,7 @@ webpackJsonp([0,1],[
 						}],
 						banner: {
 							img: 'http://img.fancyedu.com/sys/ic/operation/1482377094829_banner2.png',
-							link: 'disney'
+							link: 'rct/disney'
 						},
 						title: {
 							name: '热门推荐',
@@ -38932,9 +38932,10 @@ webpackJsonp([0,1],[
 			var id = parseInt(this.props.location.query.id);
 			return {
 				curIndex: id,
-				bgColor: '#424785',
 				data: {
-					drawing: {
+					bgColor: '#424785',
+					tabs: ['彩绘名著科普', '有趣的科学'],
+					data: [{
 						topImg: [{
 							img: 'http://img.fancyedu.com/sys/ic/operation/1482724959997_k.jpg',
 							link: 'disney'
@@ -38952,8 +38953,7 @@ webpackJsonp([0,1],[
 							price: '288',
 							link: 'disney'
 						}]
-					},
-					science: {
+					}, {
 						topImg: [{
 							img: 'http://img.fancyedu.com/sys/ic/operation/1482724970053_w.jpg',
 							link: 'disney'
@@ -38971,9 +38971,8 @@ webpackJsonp([0,1],[
 							price: '288',
 							link: 'disney'
 						}]
-					}
+					}]
 				}
-
 			};
 		},
 		render: function render() {
@@ -38982,9 +38981,9 @@ webpackJsonp([0,1],[
 			var Tab = function Tab() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'barNav', style: { padding: '.2rem .2rem 0', backgroundColor: _this3.state.bgColor } },
+					{ className: 'barNav', style: { padding: '.2rem .2rem 0', backgroundColor: _this3.state.data.bgColor } },
 					_react2.default.createElement(_segmentedControl2.default, {
-						values: ['彩绘名著科普', '有趣的科学'],
+						values: _this3.state.data.tabs,
 						onChange: _this3.change,
 						selectedIndex: _this3.state.curIndex,
 						className: 'dkProjectTab'
@@ -38994,7 +38993,7 @@ webpackJsonp([0,1],[
 			var Page = function Page() {
 				return _react2.default.createElement(
 					'div',
-					{ style: { backgroundColor: _this3.state.bgColor } },
+					{ style: { backgroundColor: _this3.state.data.bgColor } },
 					_react2.default.createElement(Tab, null),
 					_react2.default.createElement(
 						'div',
@@ -39008,16 +39007,16 @@ webpackJsonp([0,1],[
 					Page = function Page() {
 						return _react2.default.createElement(
 							'div',
-							{ style: { backgroundColor: _this3.state.bgColor } },
+							{ style: { backgroundColor: _this3.state.data.bgColor } },
 							_react2.default.createElement(Tab, null),
 							_react2.default.createElement(
 								'div',
 								{ className: 'content', style: { paddingTop: '1.2rem' } },
-								_react2.default.createElement(Img, { data: _this3.state.data.drawing.topImg }),
+								_react2.default.createElement(Img, { data: _this3.state.data.data[0].topImg }),
 								_react2.default.createElement(
 									'div',
 									{ className: 'clearfix', style: { padding: '0 .2rem' } },
-									_react2.default.createElement(GoodsList, { data: _this3.state.data.drawing.listData })
+									_react2.default.createElement(GoodsList, { data: _this3.state.data.data[0].listData })
 								)
 							)
 						);
@@ -39027,16 +39026,16 @@ webpackJsonp([0,1],[
 					Page = function Page() {
 						return _react2.default.createElement(
 							'div',
-							{ style: { backgroundColor: _this3.state.bgColor } },
+							{ style: { backgroundColor: _this3.state.data.bgColor } },
 							_react2.default.createElement(Tab, null),
 							_react2.default.createElement(
 								'div',
 								{ className: 'content', style: { paddingTop: '1.2rem' } },
-								_react2.default.createElement(Img, { data: _this3.state.data.science.topImg }),
+								_react2.default.createElement(Img, { data: _this3.state.data.data[1].topImg }),
 								_react2.default.createElement(
 									'div',
 									{ className: 'clearfix', style: { padding: '0 .2rem' } },
-									_react2.default.createElement(GoodsList, { data: _this3.state.data.science.listData })
+									_react2.default.createElement(GoodsList, { data: _this3.state.data.data[1].listData })
 								)
 							)
 						);
@@ -39310,46 +39309,6 @@ webpackJsonp([0,1],[
 /* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(418);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(236)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/.0.24.0@css-loader/index.js!./../../node_modules/.0.11.1@postcss-loader/index.js!./../../node_modules/.4.0.2@sass-loader/index.js?outputStyle=expanded!./common.scss", function() {
-				var newContent = require("!!./../../node_modules/.0.24.0@css-loader/index.js!./../../node_modules/.0.11.1@postcss-loader/index.js!./../../node_modules/.4.0.2@sass-loader/index.js?outputStyle=expanded!./common.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 418 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(235)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".barNav {\n  min-height: 0.88rem;\n  line-height: 0.88rem;\n  text-align: center;\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  z-index: 99;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n\n.barNav h2 {\n  margin: 0;\n  padding: 0;\n  font-size: .3rem;\n}\n\n.barNav .pullLeft {\n  margin: .2rem 0 0 .2rem;\n  float: left;\n}\n\n.barNav .pullRight {\n  margin: .2rem .2rem 0 0;\n  float: right;\n}\n\n.barNav ~ .content {\n  padding-top: 0.88rem;\n}\n\np {\n  margin: 0;\n}\n\n.line1 {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.line2, .line3, .line4 {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n}\n\n.line2 {\n  -webkit-line-clamp: 2;\n}\n\n.line3 {\n  -webkit-line-clamp: 3;\n}\n\n.clearfix:before,\n.clearfix:after {\n  content: \" \";\n  display: table;\n}\n\n.clearfix:after {\n  clear: both;\n}\n\n.block {\n  display: block;\n}\n\n.overflowHidden {\n  overflow: hidden;\n}\n\n.bgColorRed {\n  background-color: #e33333;\n  color: #fff;\n}\n\n.bgColorWhite {\n  background-color: #fff;\n  color: #444;\n}\n\n.colorRed {\n  color: #e33333;\n}\n\n.ac {\n  text-align: center;\n}\n\n.pd10 {\n  padding: 10px;\n}\n\n.title {\n  padding-left: .6rem;\n  padding-bottom: .2rem;\n  margin: .2rem 0;\n  border-bottom: solid 1px #ddd;\n  position: relative;\n}\n\n.title:before {\n  content: '.';\n  position: absolute;\n  left: .2rem;\n  top: 0;\n  width: .15rem;\n  hieght: 100%;\n}\n\n.title.yellow:before {\n  color: #FFC300;\n  background: #FFC300;\n}\n\n.title.blue:before {\n  color: #0380E0;\n  background: #0380E0;\n}\n\n.title.green:before {\n  color: #0AE5BA;\n  background: #0AE5BA;\n}\n\n.title.red:before {\n  color: #e33333;\n  background: #e33333;\n}\n\n.autoImg, .autoImg img {\n  width: 100%;\n  display: block;\n  vertical-align: bottom;\n}\n\n.am-button-primary {\n  background-color: #e33333;\n  border-color: #e33333;\n}\n\n.noDot div[class^=\"slider-decorator\"] {\n  display: none !important;\n}\n\n.ngProjectTab.am-segment {\n  background-color: transparent;\n  height: .65rem;\n  border-radius: .3rem;\n}\n\n.ngProjectTab.am-segment .am-segment-item:last-child {\n  border-radius: 0 .3rem .3rem 0;\n}\n\n.ngProjectTab.am-segment .am-segment-item:first-child {\n  border-radius: .3rem 0 0 .3rem;\n}\n\n.ngProjectTab.am-segment .am-segment-item {\n  border-color: #FEF150;\n  color: #FEF150 !important;\n  background-color: #015080 !important;\n}\n\n.ngProjectTab.am-segment .am-segment-item-selected {\n  background-color: #FEF150 !important;\n  border-color: #FEF150;\n  color: #015080 !important;\n}\n\n.dkProjectTab.am-segment {\n  background-color: transparent;\n  height: .65rem;\n  border-radius: .3rem;\n}\n\n.dkProjectTab.am-segment .am-segment-item:last-child {\n  border-radius: 0 .3rem .3rem 0;\n}\n\n.dkProjectTab.am-segment .am-segment-item:first-child {\n  border-radius: .3rem 0 0 .3rem;\n}\n\n.dkProjectTab.am-segment .am-segment-item {\n  border-color: #FEF150;\n  color: #FEF150 !important;\n  background-color: #424785 !important;\n}\n\n.dkProjectTab.am-segment .am-segment-item-selected {\n  background-color: #FEF150 !important;\n  border-color: #FEF150;\n  color: #424785 !important;\n}\n\n.am-list-noBg .am-list-body {\n  background: none;\n}\n\n.am-list-noBg .am-list-body, .am-list-noBg .am-list-body:after {\n  border: none;\n}\n\n.am-list-footer {\n  clear: both;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 419 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -39376,6 +39335,46 @@ webpackJsonp([0,1],[
 	});
 
 	exports.ImgList = ImgList;
+
+/***/ },
+/* 418 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(419);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(236)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/.0.24.0@css-loader/index.js!./../../node_modules/.0.11.1@postcss-loader/index.js!./../../node_modules/.4.0.2@sass-loader/index.js?outputStyle=expanded!./common.scss", function() {
+				var newContent = require("!!./../../node_modules/.0.24.0@css-loader/index.js!./../../node_modules/.0.11.1@postcss-loader/index.js!./../../node_modules/.4.0.2@sass-loader/index.js?outputStyle=expanded!./common.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 419 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(235)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".barNav {\n  min-height: 0.88rem;\n  line-height: 0.88rem;\n  text-align: center;\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  z-index: 99;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n\n.barNav h2 {\n  margin: 0;\n  padding: 0;\n  font-size: .3rem;\n}\n\n.barNav .pullLeft {\n  margin: .2rem 0 0 .2rem;\n  float: left;\n}\n\n.barNav .pullRight {\n  margin: .2rem .2rem 0 0;\n  float: right;\n}\n\n.barNav ~ .content {\n  padding-top: 0.88rem;\n}\n\np {\n  margin: 0;\n}\n\n.line1 {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.line2, .line3, .line4 {\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n}\n\n.line2 {\n  -webkit-line-clamp: 2;\n}\n\n.line3 {\n  -webkit-line-clamp: 3;\n}\n\n.clearfix:before,\n.clearfix:after {\n  content: \" \";\n  display: table;\n}\n\n.clearfix:after {\n  clear: both;\n}\n\n.block {\n  display: block;\n}\n\n.overflowHidden {\n  overflow: hidden;\n}\n\n.bgColorRed {\n  background-color: #e33333;\n  color: #fff;\n}\n\n.bgColorWhite {\n  background-color: #fff;\n  color: #444;\n}\n\n.colorRed {\n  color: #e33333;\n}\n\n.ac {\n  text-align: center;\n}\n\n.pd10 {\n  padding: 10px;\n}\n\n.title {\n  padding-left: .6rem;\n  padding-bottom: .2rem;\n  margin: .2rem 0;\n  border-bottom: solid 1px #ddd;\n  position: relative;\n}\n\n.title:before {\n  content: '.';\n  position: absolute;\n  left: .2rem;\n  top: 0;\n  width: .15rem;\n  hieght: 100%;\n}\n\n.title.yellow:before {\n  color: #FFC300;\n  background: #FFC300;\n}\n\n.title.blue:before {\n  color: #0380E0;\n  background: #0380E0;\n}\n\n.title.green:before {\n  color: #0AE5BA;\n  background: #0AE5BA;\n}\n\n.title.red:before {\n  color: #e33333;\n  background: #e33333;\n}\n\n.autoImg, .autoImg img {\n  width: 100%;\n  display: block;\n  vertical-align: bottom;\n}\n\n.am-button-primary {\n  background-color: #e33333;\n  border-color: #e33333;\n}\n\n.noDot div[class^=\"slider-decorator\"] {\n  display: none !important;\n}\n\n.ngProjectTab.am-segment {\n  background-color: transparent;\n  height: .65rem;\n  border-radius: .3rem;\n}\n\n.ngProjectTab.am-segment .am-segment-item:last-child {\n  border-radius: 0 .3rem .3rem 0;\n}\n\n.ngProjectTab.am-segment .am-segment-item:first-child {\n  border-radius: .3rem 0 0 .3rem;\n}\n\n.ngProjectTab.am-segment .am-segment-item {\n  border-color: #FEF150;\n  color: #FEF150 !important;\n  background-color: #015080 !important;\n}\n\n.ngProjectTab.am-segment .am-segment-item-selected {\n  background-color: #FEF150 !important;\n  border-color: #FEF150;\n  color: #015080 !important;\n}\n\n.dkProjectTab.am-segment {\n  background-color: transparent;\n  height: .65rem;\n  border-radius: .3rem;\n}\n\n.dkProjectTab.am-segment .am-segment-item:last-child {\n  border-radius: 0 .3rem .3rem 0;\n}\n\n.dkProjectTab.am-segment .am-segment-item:first-child {\n  border-radius: .3rem 0 0 .3rem;\n}\n\n.dkProjectTab.am-segment .am-segment-item {\n  border-color: #FEF150;\n  color: #FEF150 !important;\n  background-color: #424785 !important;\n}\n\n.dkProjectTab.am-segment .am-segment-item-selected {\n  background-color: #FEF150 !important;\n  border-color: #FEF150;\n  color: #424785 !important;\n}\n\n.am-list-noBg .am-list-body {\n  background: none;\n}\n\n.am-list-noBg .am-list-body, .am-list-noBg .am-list-body:after {\n  border: none;\n}\n\n.am-list-footer {\n  clear: both;\n}\n", ""]);
+
+	// exports
+
 
 /***/ }
 ]);
