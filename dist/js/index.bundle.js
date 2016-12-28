@@ -24,6 +24,8 @@ webpackJsonp([0,1],[
 
 	var _disney = __webpack_require__(416);
 
+	var _imgList = __webpack_require__(419);
+
 	__webpack_require__(417);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -50,6 +52,7 @@ webpackJsonp([0,1],[
 	    _react2.default.createElement(_reactRouter.Route, { path: 'disney', component: _disney.Disney }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'ngProject', component: _ngProject.NgProject }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'dkProject', component: _dkProject.DkProject }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'imgList', component: _imgList.ImgList }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: _noMatch2.default })
 	  )
 	), document.getElementById('J_Container'));
@@ -32261,15 +32264,15 @@ webpackJsonp([0,1],[
 			var id = parseInt(this.props.location.query.id);
 			return {
 				curIndex: id,
-				bgColor: '#015080',
 				data: {
-					ngkids: {
+					bgColor: '#015080',
+					tabs: ['环球少年', 'Our World', 'Science'],
+					data: [{
 						topImg: [{
 							img: 'http://img.fancyedu.com/sys/ic/operation/1482724922513_dd.jpg',
 							link: 'disney'
 						}]
-					},
-					ourWorld: {
+					}, {
 						topImg: [{
 							img: 'http://img.fancyedu.com/sys/ic/operation/1482724979742_OUR WOLRD.jpg',
 							link: 'disney'
@@ -32293,8 +32296,7 @@ webpackJsonp([0,1],[
 							price: '288',
 							link: 'disney'
 						}]
-					},
-					science: {
+					}, {
 						topImg: [{
 							img: 'http://img.fancyedu.com/sys/ic/operation/1482724988266_Science.jpg',
 							link: 'disney'
@@ -32312,7 +32314,7 @@ webpackJsonp([0,1],[
 							price: '288',
 							link: 'disney'
 						}]
-					}
+					}]
 				}
 
 			};
@@ -32335,7 +32337,7 @@ webpackJsonp([0,1],[
 			var Page = function Page() {
 				return _react2.default.createElement(
 					'div',
-					{ style: { backgroundColor: _this3.state.bgColor } },
+					{ style: { backgroundColor: _this3.state.data.bgColor } },
 					_react2.default.createElement(Tab, null),
 					_react2.default.createElement(
 						'div',
@@ -32349,12 +32351,12 @@ webpackJsonp([0,1],[
 					Page = function Page() {
 						return _react2.default.createElement(
 							'div',
-							{ style: { backgroundColor: _this3.state.bgColor } },
-							_react2.default.createElement(Tab, null),
+							{ style: { backgroundColor: _this3.state.data.bgColor } },
+							_react2.default.createElement(Tab, { data: _this3.state.data.tabs }),
 							_react2.default.createElement(
 								'div',
 								{ className: 'content', style: { paddingTop: '1.2rem' } },
-								_react2.default.createElement(Img, { data: _this3.state.data.ngkids.topImg })
+								_react2.default.createElement(Img, { data: _this3.state.data.data[0].topImg })
 							)
 						);
 					};
@@ -32363,13 +32365,13 @@ webpackJsonp([0,1],[
 					Page = function Page() {
 						return _react2.default.createElement(
 							'div',
-							{ style: { backgroundColor: _this3.state.bgColor } },
+							{ style: { backgroundColor: _this3.state.data.bgColor } },
 							_react2.default.createElement(Tab, null),
 							_react2.default.createElement(
 								'div',
 								{ className: 'content', style: { paddingTop: '1.2rem' } },
-								_react2.default.createElement(Img, { data: _this3.state.data.ourWorld.topImg }),
-								_react2.default.createElement(GoodsList, { data: _this3.state.data.ourWorld.listData })
+								_react2.default.createElement(Img, { data: _this3.state.data.data[1].topImg }),
+								_react2.default.createElement(GoodsList, { data: _this3.state.data.data[1].listData })
 							)
 						);
 					};
@@ -32378,13 +32380,13 @@ webpackJsonp([0,1],[
 					Page = function Page() {
 						return _react2.default.createElement(
 							'div',
-							{ style: { backgroundColor: _this3.state.bgColor } },
+							{ style: { backgroundColor: _this3.state.data.bgColor } },
 							_react2.default.createElement(Tab, null),
 							_react2.default.createElement(
 								'div',
 								{ className: 'content', style: { paddingTop: '1.2rem' } },
-								_react2.default.createElement(Img, { data: _this3.state.data.science.topImg }),
-								_react2.default.createElement(GoodsList, { data: _this3.state.data.science.listData })
+								_react2.default.createElement(Img, { data: _this3.state.data.data[2].topImg }),
+								_react2.default.createElement(GoodsList, { data: _this3.state.data.data[2].listData })
 							)
 						);
 					};
@@ -39343,6 +39345,37 @@ webpackJsonp([0,1],[
 
 	// exports
 
+
+/***/ },
+/* 419 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.ImgList = undefined;
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ImgList = _react2.default.createClass({
+		displayName: 'ImgList',
+
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				'imglist'
+			);
+		}
+	});
+
+	exports.ImgList = ImgList;
 
 /***/ }
 ]);

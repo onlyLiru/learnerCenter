@@ -123,66 +123,69 @@ const NgProject= React.createClass({
 		const id =parseInt(this.props.location.query.id);
 		return {
 			curIndex:id,
-			bgColor:'#015080',
-			data: {
-				ngkids:{
-					topImg:[{
-						img:'http://img.fancyedu.com/sys/ic/operation/1482724922513_dd.jpg',
-						link:'disney'
-					}]
-				},
-				ourWorld:{
-					topImg:[{
-						img:'http://img.fancyedu.com/sys/ic/operation/1482724979742_OUR WOLRD.jpg',
-						link:'disney'
-					}],
-					listData : [
-						  {
-						    img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-						    title: '美国国家地理our world 英文原版绘本 level4(全9册)',
-						    des: '美国国家地理our world 英文原版绘本 level4(全9册)',
-						    price:'288',
-						    link:'disney'
-						  },
-						  {
-						    img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
-						    title: '麦当劳邀您过周末',
-						    des: '不是所有的兼职汪都需要风吹日晒',
-						    price:'288',
-						    link:''
-						  },
-						  {
-						    img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
-						    title: '食惠周',
-						    des: '不是所有的兼职汪都需要风吹日晒',
-						    price:'288',
-						    link:'disney'
-						  },
-					]
-				},
-				science:{
-					topImg:[{
-						img:'http://img.fancyedu.com/sys/ic/operation/1482724988266_Science.jpg',
-						link:'disney'
-					}],
-					listData : [
-						  {
-						    img: 'http://img.fancyedu.com/sys/ic/operation/1482725388929_OWR_G5U8_TailorCoat_CVR-1.png',
-						    title: '相约酒店',
-						    des: '不是所有的兼职汪都需要风吹日晒',
-						    price:'288',
-						    link:'disney'
-						  },
-						  {
-						    img: 'http://img.fancyedu.com/sys/ic/operation/1482725382444_OWR_G4U9_TugOfWar_CVR_CP-1.png',
-						    title: '麦当劳邀您过周末',
-						    des: '不是所有的兼职汪都需要风吹日晒',
-						    price:'288',
-						    link:'disney'
-						  },
-					]
-				}
-			},
+			data:{
+				bgColor:'#015080',
+				tabs:['环球少年', 'Our World', 'Science'],
+				data:[
+					{
+						topImg:[{
+							img:'http://img.fancyedu.com/sys/ic/operation/1482724922513_dd.jpg',
+							link:'disney'
+						}]
+					},
+					{
+						topImg:[{
+							img:'http://img.fancyedu.com/sys/ic/operation/1482724979742_OUR WOLRD.jpg',
+							link:'disney'
+						}],
+						listData : [
+							  {
+							    img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
+							    title: '美国国家地理our world 英文原版绘本 level4(全9册)',
+							    des: '美国国家地理our world 英文原版绘本 level4(全9册)',
+							    price:'288',
+							    link:'disney'
+							  },
+							  {
+							    img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
+							    title: '麦当劳邀您过周末',
+							    des: '不是所有的兼职汪都需要风吹日晒',
+							    price:'288',
+							    link:''
+							  },
+							  {
+							    img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
+							    title: '食惠周',
+							    des: '不是所有的兼职汪都需要风吹日晒',
+							    price:'288',
+							    link:'disney'
+							  },
+						]
+					},
+					{
+						topImg:[{
+							img:'http://img.fancyedu.com/sys/ic/operation/1482724988266_Science.jpg',
+							link:'disney'
+						}],
+						listData : [
+							  {
+							    img: 'http://img.fancyedu.com/sys/ic/operation/1482725388929_OWR_G5U8_TailorCoat_CVR-1.png',
+							    title: '相约酒店',
+							    des: '不是所有的兼职汪都需要风吹日晒',
+							    price:'288',
+							    link:'disney'
+							  },
+							  {
+							    img: 'http://img.fancyedu.com/sys/ic/operation/1482725382444_OWR_G4U9_TugOfWar_CVR_CP-1.png',
+							    title: '麦当劳邀您过周末',
+							    des: '不是所有的兼职汪都需要风吹日晒',
+							    price:'288',
+							    link:'disney'
+							  },
+						]
+					}
+				]
+			}
 			
 		};
 	},
@@ -198,7 +201,7 @@ const NgProject= React.createClass({
 			</div>
 		};
 		let Page = () => {
-			return (<div style={{ backgroundColor:this.state.bgColor }}>
+			return (<div style={{ backgroundColor:this.state.data.bgColor }}>
 				<Tab />
 				<div className='content' style={{paddingTop:'1.2rem'}}>
 					您访问的页面不存在
@@ -208,32 +211,32 @@ const NgProject= React.createClass({
 		switch(this.state.curIndex){
 			case 0 :
 				Page = ()=> {
-					return <div style={{ backgroundColor:this.state.bgColor }}>
-						<Tab />
+					return <div style={{ backgroundColor:this.state.data.bgColor }}>
+						<Tab data={this.state.data.tabs} />
 						<div className='content' style={{paddingTop:'1.2rem'}}>
-							<Img data={this.state.data.ngkids.topImg} />
+							<Img data={this.state.data.data[0].topImg} />
 						</div>
 					</div>
 				};
 				break;
 			case 1 :
 				Page = ()=> { 
-					return <div style={{ backgroundColor:this.state.bgColor }}>
+					return <div style={{ backgroundColor:this.state.data.bgColor }}>
 						<Tab />
 						<div className='content' style={{paddingTop:'1.2rem'}}>
-							<Img data={this.state.data.ourWorld.topImg} />
-							<GoodsList data={ this.state.data.ourWorld.listData } />
+							<Img data={this.state.data.data[1].topImg} />
+							<GoodsList data={ this.state.data.data[1].listData } />
 						</div>
 					</div> 
 				};
 				break;
 			case 2 :
 				Page = ()=> { 
-					return <div style={{ backgroundColor:this.state.bgColor }}>
+					return <div style={{ backgroundColor:this.state.data.bgColor }}>
 						<Tab />
 						<div className='content' style={{paddingTop:'1.2rem'}}>
-							<Img data={this.state.data.science.topImg} />
-							<GoodsList data={ this.state.data.science.listData } />
+							<Img data={this.state.data.data[2].topImg} />
+							<GoodsList data={ this.state.data.data[2].listData } />
 						</div>
 					</div> 
 				};
