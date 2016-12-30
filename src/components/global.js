@@ -1,5 +1,6 @@
+import React from 'react';
 
-export function connectWebViewJavascriptBridge(callback) {
+function connectWebViewJavascriptBridge(callback) {
     if (window.WebViewJavascriptBridge) {
         callback(WebViewJavascriptBridge)
     } else {
@@ -9,7 +10,7 @@ export function connectWebViewJavascriptBridge(callback) {
     }
 }
 
-export function ngator(){
+function ngator(){
     var u = navigator.userAgent;
     return{
         isWeixin:(u.toLowerCase()).match(/MicroMessenger/i) == 'micromessenger',
@@ -26,3 +27,17 @@ export function ngator(){
         webApp:u.indexOf('Safari') == -1 //是否为App应用程序，没有头部与底部
     };
 }
+
+/*标题*/
+class Title extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    render (){
+        return (<div>
+            <h4 className={this.props.classProps}>{this.props.name}</h4>
+        </div>);
+    }
+};
+
+export { connectWebViewJavascriptBridge, ngator, Title }

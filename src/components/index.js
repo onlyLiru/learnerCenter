@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { Carousel,Grid, WhiteSpace, Icon } from 'antd-mobile';
+import { Title } from './global.js';
 /*banner轮播图*/
 class ImgScroll extends React.Component {
 	constructor(props) {
@@ -145,17 +146,6 @@ class GoodsList extends React.Component {
 		</div>);
 	}
 };
-/*标题*/
-class Title extends React.Component {
-	constructor(props){
-		super(props);
-	}
-	render (){
-		return (<div>
-			<h4 className={this.props.classProps}>{this.props.name}</h4>
-		</div>);
-	}
-};
 
 const Index= React.createClass({
 	getInitialState:function(){
@@ -164,46 +154,46 @@ const Index= React.createClass({
 				banner:[
 						{
 							img:'http://img.fancyedu.com/sys/ic/operation/1482377088291_banner1.png',
-							link:'rct/lessonDetail'
+							link:'/rct/lessonDetail'
 						}
 					],
 				gardenEnjoy:[{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link:'rct/ngProject?id=0'
+						link:'/rct/ngProject?id=0'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377109011_DK.png',
-						link:'rct/ngProject?id=1'
+						link:'/rct/ngProject?id=1'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link:'rct/ngProject?id=2'
+						link:'/rct/ngProject?id=2'
 					}],
 				bookCategory:[{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377020458_（1）0-3.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link:'/rct/category',
 						text:'0-3岁'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377030007_（2）3-6.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link:'/rct/category',
 						text:'3-6岁'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377043590_（3）6.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link:'/rct/category',
 						text:'6岁以上'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377036764_（4.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link:'/rct/category',
 						text:'幼儿绘本'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377036764_（4.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link:'/rct/category',
 						text:'幼儿绘本'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377036764_（4.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link:'/rct/category',
 						text:'幼儿绘本'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377036764_（4.png',
-						link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link:'/rct/category',
 						text:'幼儿绘本'
 					}],
 				goodsList:[{
@@ -220,7 +210,7 @@ const Index= React.createClass({
 						],
 						banner:{
 							img:'http://img.fancyedu.com/sys/ic/operation/1482377094829_banner2.png',
-							link:'rct/disney'
+							link:'/rct/disney'
 						},
 						title:{
 							name:'热门推荐',

@@ -15,5 +15,5 @@ new WebpackDevServer(webpack(config), config.devServer)
   }
   console.log('Listening at '+ ip +':' + config.port);
   console.log('Opening your system browser...');
-  open('http://'+ ip +':' + config.port);
+  open('http://'+ ip +':' + config.port+'/rct');
 });

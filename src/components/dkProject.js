@@ -121,8 +121,7 @@ const DkProject= React.createClass({
 	getInitialState:function() {
 		const id =parseInt(this.props.location.query.id);
 		return {
-			curIndex:id,
-			data: {
+				curIndex:id,
 				bgColor:'#424785',
 				tabs:['彩绘名著科普', '有趣的科学'],
 				data:[
@@ -171,14 +170,13 @@ const DkProject= React.createClass({
 						]
 					}
 				]
-			}
 		};
 	},
 	render:function() {
 		const Tab = () => {
 			return <div className="barNav" style={{padding:'.2rem .2rem 0',backgroundColor:this.state.data.bgColor}}>
 				<SegmentedControl
-		          values={this.state.data.tabs}
+		          values={this.state.tabs}
 		          onChange={ this.change }
 		          selectedIndex={this.state.curIndex}
 		          className='dkProjectTab'
@@ -186,7 +184,7 @@ const DkProject= React.createClass({
 			</div>
 		};
 		let Page = () => {
-			return (<div style={{ backgroundColor:this.state.data.bgColor }}>
+			return (<div style={{ backgroundColor:this.state.bgColor }}>
 				<Tab />
 				<div className='content' style={{paddingTop:'1.2rem'}}>
 					您访问的页面不存在
@@ -196,12 +194,12 @@ const DkProject= React.createClass({
 		switch(this.state.curIndex){
 			case 0 :
 				Page = ()=> {
-					return <div style={{ backgroundColor:this.state.data.bgColor }}>
+					return <div style={{ backgroundColor:this.state.bgColor }}>
 						<Tab />
 						<div className='content' style={{paddingTop:'1.2rem'}}>
-							<Img data={this.state.data.data[0].topImg} />
+							<Img data={this.state.data[0].topImg} />
 							<div className="clearfix" style={{padding:'0 .2rem'}}>
-								<GoodsList data={ this.state.data.data[0].listData } />
+								<GoodsList data={ this.state.data[0].listData } />
 							</div>
 						</div>
 					</div>
@@ -209,12 +207,12 @@ const DkProject= React.createClass({
 				break;
 			case 1 :
 				Page = ()=> { 
-					return <div style={{ backgroundColor:this.state.data.bgColor }}>
+					return <div style={{ backgroundColor:this.state.bgColor }}>
 						<Tab />
 						<div className='content' style={{paddingTop:'1.2rem'}}>
-							<Img data={this.state.data.data[1].topImg} />
+							<Img data={this.state.data[1].topImg} />
 							<div className="clearfix" style={{padding:'0 .2rem'}}>
-								<GoodsList data={ this.state.data.data[1].listData } />
+								<GoodsList data={ this.state.data[1].listData } />
 							</div>
 						</div>
 					</div> 

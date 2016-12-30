@@ -26,6 +26,8 @@ webpackJsonp([0,1],[
 
 	var _imgList = __webpack_require__(417);
 
+	var _category = __webpack_require__(420);
+
 	__webpack_require__(418);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -53,8 +55,9 @@ webpackJsonp([0,1],[
 	    _react2.default.createElement(_reactRouter.Route, { path: 'ngProject', component: _ngProject.NgProject }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'dkProject', component: _dkProject.DkProject }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'imgList', component: _imgList.ImgList }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: _noMatch2.default })
-	  )
+	    _react2.default.createElement(_reactRouter.Route, { path: 'category', component: _category.CategoryComponent })
+	  ),
+	  _react2.default.createElement(_reactRouter.Route, { path: '*', component: _noMatch2.default })
 	), document.getElementById('J_Container'));
 
 /***/ },
@@ -29034,6 +29037,8 @@ webpackJsonp([0,1],[
 
 	var _reactRouter = __webpack_require__(175);
 
+	var _global = __webpack_require__(421);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29110,7 +29115,7 @@ webpackJsonp([0,1],[
 				return _react2.default.createElement(
 					'div',
 					{ className: 'bgColorWhite overflowHidden' },
-					_react2.default.createElement(Title, {
+					_react2.default.createElement(_global.Title, {
 						classProps: 'title red',
 						name: '\u4E50\u56ED\u4E13\u4EAB' }),
 					_react2.default.createElement(_grid2.default, {
@@ -29168,7 +29173,7 @@ webpackJsonp([0,1],[
 				return _react2.default.createElement(
 					'div',
 					{ className: 'bgColorWhite overflowHidden' },
-					_react2.default.createElement(Title, { classProps: 'title yellow', name: '\u56FE\u4E66\u5206\u7C7B' }),
+					_react2.default.createElement(_global.Title, { classProps: 'title yellow', name: '\u56FE\u4E66\u5206\u7C7B' }),
 					_react2.default.createElement(_grid2.default, {
 						className: 'noDot  gridIconNav',
 						data: this.props.data,
@@ -29231,7 +29236,7 @@ webpackJsonp([0,1],[
 			key: 'html',
 			value: function html() {
 				var html = this.props.data.map(function (d, i) {
-					var title = _react2.default.createElement(Title, { classProps: d.title.className, name: d.title.name });
+					var title = _react2.default.createElement(_global.Title, { classProps: d.title.className, name: d.title.name });
 					var goodsHtml = _react2.default.createElement(_grid2.default, { columnNum: 2, data: d.goods, hasLine: false,
 						renderItem: function renderItem(dataItem, index) {
 							return _react2.default.createElement(
@@ -29295,36 +29300,6 @@ webpackJsonp([0,1],[
 	}(_react2.default.Component);
 
 	;
-	/*标题*/
-
-	var Title = function (_React$Component5) {
-		_inherits(Title, _React$Component5);
-
-		function Title(props) {
-			_classCallCheck(this, Title);
-
-			return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).call(this, props));
-		}
-
-		_createClass(Title, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'h4',
-						{ className: this.props.classProps },
-						this.props.name
-					)
-				);
-			}
-		}]);
-
-		return Title;
-	}(_react2.default.Component);
-
-	;
 
 	var Index = _react2.default.createClass({
 		displayName: 'Index',
@@ -29334,45 +29309,45 @@ webpackJsonp([0,1],[
 				data: {
 					banner: [{
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377088291_banner1.png',
-						link: 'rct/lessonDetail'
+						link: '/rct/lessonDetail'
 					}],
 					gardenEnjoy: [{
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link: 'rct/ngProject?id=0'
+						link: '/rct/ngProject?id=0'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377109011_DK.png',
-						link: 'rct/ngProject?id=1'
+						link: '/rct/ngProject?id=1'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link: 'rct/ngProject?id=2'
+						link: '/rct/ngProject?id=2'
 					}],
 					bookCategory: [{
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377020458_（1）0-3.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link: '/rct/category',
 						text: '0-3岁'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377030007_（2）3-6.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link: '/rct/category',
 						text: '3-6岁'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377043590_（3）6.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link: '/rct/category',
 						text: '6岁以上'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377036764_（4.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link: '/rct/category',
 						text: '幼儿绘本'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377036764_（4.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link: '/rct/category',
 						text: '幼儿绘本'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377036764_（4.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link: '/rct/category',
 						text: '幼儿绘本'
 					}, {
 						img: 'http://img.fancyedu.com/sys/ic/operation/1482377036764_（4.png',
-						link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+						link: '/rct/category',
 						text: '幼儿绘本'
 					}],
 					goodsList: [{
@@ -29387,7 +29362,7 @@ webpackJsonp([0,1],[
 						}],
 						banner: {
 							img: 'http://img.fancyedu.com/sys/ic/operation/1482377094829_banner2.png',
-							link: 'rct/disney'
+							link: '/rct/disney'
 						},
 						title: {
 							name: '热门推荐',
@@ -38932,47 +38907,45 @@ webpackJsonp([0,1],[
 			var id = parseInt(this.props.location.query.id);
 			return {
 				curIndex: id,
-				data: {
-					bgColor: '#424785',
-					tabs: ['彩绘名著科普', '有趣的科学'],
-					data: [{
-						topImg: [{
-							img: 'http://img.fancyedu.com/sys/ic/operation/1482724959997_k.jpg',
-							link: 'disney'
-						}],
-						listData: [{
-							img: 'http://img.fancyedu.com/sys/ic/operation/1482725388929_OWR_G5U8_TailorCoat_CVR-1.png',
-							title: '相约酒店',
-							des: '不是所有的兼职汪都需要风吹日晒',
-							price: '288',
-							link: 'disney'
-						}, {
-							img: 'http://img.fancyedu.com/sys/ic/operation/1482725382444_OWR_G4U9_TugOfWar_CVR_CP-1.png',
-							title: '麦当劳邀您过周末',
-							des: '不是所有的兼职汪都需要风吹日晒',
-							price: '288',
-							link: 'disney'
-						}]
+				bgColor: '#424785',
+				tabs: ['彩绘名著科普', '有趣的科学'],
+				data: [{
+					topImg: [{
+						img: 'http://img.fancyedu.com/sys/ic/operation/1482724959997_k.jpg',
+						link: 'disney'
+					}],
+					listData: [{
+						img: 'http://img.fancyedu.com/sys/ic/operation/1482725388929_OWR_G5U8_TailorCoat_CVR-1.png',
+						title: '相约酒店',
+						des: '不是所有的兼职汪都需要风吹日晒',
+						price: '288',
+						link: 'disney'
 					}, {
-						topImg: [{
-							img: 'http://img.fancyedu.com/sys/ic/operation/1482724970053_w.jpg',
-							link: 'disney'
-						}],
-						listData: [{
-							img: 'http://img.fancyedu.com/sys/ic/operation/1482725388929_OWR_G5U8_TailorCoat_CVR-1.png',
-							title: '相约酒店',
-							des: '不是所有的兼职汪都需要风吹日晒',
-							price: '288',
-							link: 'disney'
-						}, {
-							img: 'http://img.fancyedu.com/sys/ic/operation/1482725382444_OWR_G4U9_TugOfWar_CVR_CP-1.png',
-							title: '麦当劳邀您过周末',
-							des: '不是所有的兼职汪都需要风吹日晒',
-							price: '288',
-							link: 'disney'
-						}]
+						img: 'http://img.fancyedu.com/sys/ic/operation/1482725382444_OWR_G4U9_TugOfWar_CVR_CP-1.png',
+						title: '麦当劳邀您过周末',
+						des: '不是所有的兼职汪都需要风吹日晒',
+						price: '288',
+						link: 'disney'
 					}]
-				}
+				}, {
+					topImg: [{
+						img: 'http://img.fancyedu.com/sys/ic/operation/1482724970053_w.jpg',
+						link: 'disney'
+					}],
+					listData: [{
+						img: 'http://img.fancyedu.com/sys/ic/operation/1482725388929_OWR_G5U8_TailorCoat_CVR-1.png',
+						title: '相约酒店',
+						des: '不是所有的兼职汪都需要风吹日晒',
+						price: '288',
+						link: 'disney'
+					}, {
+						img: 'http://img.fancyedu.com/sys/ic/operation/1482725382444_OWR_G4U9_TugOfWar_CVR_CP-1.png',
+						title: '麦当劳邀您过周末',
+						des: '不是所有的兼职汪都需要风吹日晒',
+						price: '288',
+						link: 'disney'
+					}]
+				}]
 			};
 		},
 		render: function render() {
@@ -38983,7 +38956,7 @@ webpackJsonp([0,1],[
 					'div',
 					{ className: 'barNav', style: { padding: '.2rem .2rem 0', backgroundColor: _this3.state.data.bgColor } },
 					_react2.default.createElement(_segmentedControl2.default, {
-						values: _this3.state.data.tabs,
+						values: _this3.state.tabs,
 						onChange: _this3.change,
 						selectedIndex: _this3.state.curIndex,
 						className: 'dkProjectTab'
@@ -38993,7 +38966,7 @@ webpackJsonp([0,1],[
 			var Page = function Page() {
 				return _react2.default.createElement(
 					'div',
-					{ style: { backgroundColor: _this3.state.data.bgColor } },
+					{ style: { backgroundColor: _this3.state.bgColor } },
 					_react2.default.createElement(Tab, null),
 					_react2.default.createElement(
 						'div',
@@ -39007,16 +38980,16 @@ webpackJsonp([0,1],[
 					Page = function Page() {
 						return _react2.default.createElement(
 							'div',
-							{ style: { backgroundColor: _this3.state.data.bgColor } },
+							{ style: { backgroundColor: _this3.state.bgColor } },
 							_react2.default.createElement(Tab, null),
 							_react2.default.createElement(
 								'div',
 								{ className: 'content', style: { paddingTop: '1.2rem' } },
-								_react2.default.createElement(Img, { data: _this3.state.data.data[0].topImg }),
+								_react2.default.createElement(Img, { data: _this3.state.data[0].topImg }),
 								_react2.default.createElement(
 									'div',
 									{ className: 'clearfix', style: { padding: '0 .2rem' } },
-									_react2.default.createElement(GoodsList, { data: _this3.state.data.data[0].listData })
+									_react2.default.createElement(GoodsList, { data: _this3.state.data[0].listData })
 								)
 							)
 						);
@@ -39026,16 +38999,16 @@ webpackJsonp([0,1],[
 					Page = function Page() {
 						return _react2.default.createElement(
 							'div',
-							{ style: { backgroundColor: _this3.state.data.bgColor } },
+							{ style: { backgroundColor: _this3.state.bgColor } },
 							_react2.default.createElement(Tab, null),
 							_react2.default.createElement(
 								'div',
 								{ className: 'content', style: { paddingTop: '1.2rem' } },
-								_react2.default.createElement(Img, { data: _this3.state.data.data[1].topImg }),
+								_react2.default.createElement(Img, { data: _this3.state.data[1].topImg }),
 								_react2.default.createElement(
 									'div',
 									{ className: 'clearfix', style: { padding: '0 .2rem' } },
-									_react2.default.createElement(GoodsList, { data: _this3.state.data.data[1].listData })
+									_react2.default.createElement(GoodsList, { data: _this3.state.data[1].listData })
 								)
 							)
 						);
@@ -39325,11 +39298,37 @@ webpackJsonp([0,1],[
 	var ImgList = _react2.default.createClass({
 		displayName: 'ImgList',
 
+		getInitialState: function getInitialState() {
+			return {
+				banner: [{
+					img: 'http://img.fancyedu.com/sys/ic/operation/1482903441160_fcHappey_01.png',
+					link: ''
+				}, {
+					img: 'http://img.fancyedu.com/sys/ic/operation/1482903449641_fcHappey_02.png',
+					link: ''
+				}, {
+					img: 'http://img.fancyedu.com/sys/ic/operation/1482903456949_fcHappey_03.png',
+					link: 'rct/lessonDetail'
+				}, {
+					img: 'http://img.fancyedu.com/sys/ic/operation/1482903464263_fcHappey_04.png',
+					link: 'rct/lessonDetail'
+				}, {
+					img: 'http://img.fancyedu.com/sys/ic/operation/1482903472246_fcHappey_05.jpg',
+					link: 'rct/lessonDetail'
+				}]
+			};
+		},
 		render: function render() {
 			return _react2.default.createElement(
 				'div',
 				null,
-				'imglist'
+				this.state.banner.map(function (d, i) {
+					return _react2.default.createElement(
+						'a',
+						{ href: d.link ? d.link : 'javascript:', key: i, className: 'block' },
+						_react2.default.createElement('img', { className: 'autoImg', src: d.img })
+					);
+				})
 			);
 		}
 	});
@@ -39375,6 +39374,328 @@ webpackJsonp([0,1],[
 
 	// exports
 
+
+/***/ },
+/* 420 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.CategoryComponent = undefined;
+
+	var _style3 = __webpack_require__(349);
+
+	var _grid = __webpack_require__(358);
+
+	var _grid2 = _interopRequireDefault(_grid);
+
+	var _style4 = __webpack_require__(353);
+
+	var _carousel = __webpack_require__(362);
+
+	var _carousel2 = _interopRequireDefault(_carousel);
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(175);
+
+	var _global = __webpack_require__(421);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/*banner轮播图*/
+	var ImgScroll = function (_React$Component) {
+		_inherits(ImgScroll, _React$Component);
+
+		function ImgScroll(props) {
+			_classCallCheck(this, ImgScroll);
+
+			var _this = _possibleConstructorReturn(this, (ImgScroll.__proto__ || Object.getPrototypeOf(ImgScroll)).call(this, props));
+
+			_this.state = {};
+			return _this;
+		}
+
+		_createClass(ImgScroll, [{
+			key: 'render',
+			value: function render() {
+				var imgHtml = this.props.data.map(function (d, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: i, className: 'item' },
+						_react2.default.createElement(
+							'a',
+							{ onClick: function onClick() {
+									location.href = d.link;
+								}, className: 'block', href: d.link },
+							_react2.default.createElement('img', { className: 'autoImg', src: d.img })
+						)
+					);
+				});
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						_carousel2.default,
+						{ className: 'my-carousel' },
+						imgHtml
+					)
+				);
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {}
+		}]);
+
+		return ImgScroll;
+	}(_react2.default.Component);
+
+	;
+	/*商品列表*/
+
+	var GoodsList = function (_React$Component2) {
+		_inherits(GoodsList, _React$Component2);
+
+		function GoodsList(props) {
+			_classCallCheck(this, GoodsList);
+
+			var _this2 = _possibleConstructorReturn(this, (GoodsList.__proto__ || Object.getPrototypeOf(GoodsList)).call(this, props));
+
+			_this2.state = {};
+			return _this2;
+		}
+
+		_createClass(GoodsList, [{
+			key: 'html',
+			value: function html() {
+				var html = this.props.data.map(function (d, i) {
+					var title = _react2.default.createElement(_global.Title, { classProps: d.title.className, name: d.title.name });
+					var goodsHtml = _react2.default.createElement(_grid2.default, { columnNum: 2, data: d.goods, hasLine: false,
+						renderItem: function renderItem(dataItem, index) {
+							return _react2.default.createElement(
+								'div',
+								{ style: {
+										padding: '.1rem',
+										textAlign: 'center'
+									} },
+								_react2.default.createElement(
+									'a',
+									{ className: 'block', href: dataItem.link },
+									_react2.default.createElement('img', { src: dataItem.img, style: {
+											margin: '0',
+											width: '100%'
+										} })
+								),
+								_react2.default.createElement(
+									'div',
+									{ style: { marginBottom: '.2rem' } },
+									_react2.default.createElement(
+										'p',
+										null,
+										dataItem.text
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'colorRed' },
+										'25.00'
+									)
+								)
+							);
+						}
+					});
+					var banner = d.banner.img ? _react2.default.createElement(
+						'a',
+						{ className: 'block', href: d.banner.link },
+						_react2.default.createElement('img', { className: 'autoImg', src: 'http://img.fancyedu.com/sys/ic/operation/1482377094829_banner2.png' })
+					) : '';
+					return _react2.default.createElement(
+						'div',
+						{ key: i },
+						title,
+						goodsHtml,
+						banner
+					);
+				});
+				return html;
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'bgColorWhite overflowHidden' },
+					this.html()
+				);
+			}
+		}]);
+
+		return GoodsList;
+	}(_react2.default.Component);
+
+	;
+
+	var CategoryComponent = _react2.default.createClass({
+		displayName: 'CategoryComponent',
+
+		getInitialState: function getInitialState() {
+			return {
+				data: {
+					banner: [{
+						img: 'http://img.fancyedu.com/sys/ic/operation/1482377088291_banner1.png',
+						link: '/rct/disney'
+					}],
+
+					goodsList: [{
+						goods: [{
+							img: 'http://img.fancyedu.com/sys/ic/operation/1482377124086_s1.png',
+							link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+							text: '岁以上0-3岁'
+						}, {
+							img: 'http://img.fancyedu.com/sys/ic/operation/1482377124086_s1.png',
+							link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+							text: '岁以上0-3岁'
+						}],
+						banner: {
+							img: 'http://img.fancyedu.com/sys/ic/operation/1482377094829_banner2.png',
+							link: 'disney'
+						},
+						title: {
+							name: '热门推荐',
+							className: 'title blue'
+						}
+					}, {
+						goods: [{
+							img: 'http://img.fancyedu.com/sys/ic/operation/1482377124086_s1.png',
+							link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+							text: '岁以上0-3岁'
+						}, {
+							img: 'http://img.fancyedu.com/sys/ic/operation/1482377124086_s1.png',
+							link: 'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
+							text: '岁以上0-3岁'
+						}],
+						banner: {
+							img: ''
+						},
+						title: {
+							name: '幼儿绘本',
+							className: 'title green'
+						}
+					}]
+				}
+			};
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(ImgScroll, { data: this.state.data.banner }),
+				_react2.default.createElement(GoodsList, { data: this.state.data.goodsList })
+			);
+		}
+	});
+
+	exports.CategoryComponent = CategoryComponent;
+
+/***/ },
+/* 421 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Title = exports.ngator = exports.connectWebViewJavascriptBridge = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	function connectWebViewJavascriptBridge(callback) {
+	    if (window.WebViewJavascriptBridge) {
+	        callback(WebViewJavascriptBridge);
+	    } else {
+	        document.addEventListener('WebViewJavascriptBridgeReady', function () {
+	            callback(WebViewJavascriptBridge);
+	        }, false);
+	    }
+	}
+
+	function ngator() {
+	    var u = navigator.userAgent;
+	    return {
+	        isWeixin: u.toLowerCase().match(/MicroMessenger/i) == 'micromessenger',
+	        trident: u.indexOf('Trident') > -1,
+	        presto: u.indexOf('Presto') > -1, //opera内核
+	        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+	        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+	        deskWebkit: u.indexOf("Android") == -1 && u.indexOf("Mobile") == -1,
+	        mobileWebKit: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/) || !!u.match(/.*Mobile.*/), //是否为移动终端
+	        ios: !!u.match(/(i[^;]+\;(U;)? CPU.+Mac OS X)/), //ios终端
+	        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端
+	        iPhone: u.indexOf('iPhone') > -1 && u.indexOf('Mac') > -1, //是否为iPhoneD
+	        iPad: u.indexOf('iPad') > -1, //是否iPad
+	        webApp: u.indexOf('Safari') == -1 //是否为App应用程序，没有头部与底部
+	    };
+	}
+
+	/*标题*/
+
+	var Title = function (_React$Component) {
+	    _inherits(Title, _React$Component);
+
+	    function Title(props) {
+	        _classCallCheck(this, Title);
+
+	        return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).call(this, props));
+	    }
+
+	    _createClass(Title, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h4',
+	                    { className: this.props.classProps },
+	                    this.props.name
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Title;
+	}(_react2.default.Component);
+
+	;
+
+	exports.connectWebViewJavascriptBridge = connectWebViewJavascriptBridge;
+	exports.ngator = ngator;
+	exports.Title = Title;
 
 /***/ }
 ]);
