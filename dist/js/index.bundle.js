@@ -39348,7 +39348,7 @@ webpackJsonp([0,1],[
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.ImgScroll = exports.GoodsList = exports.Title = exports.ngator = exports.connectWebViewJavascriptBridge = undefined;
+	exports.ImgScroll = exports.GoodsList = exports.Title = exports.ngator = exports.sendToNative = exports.connectWebViewJavascriptBridge = undefined;
 
 	var _style4 = __webpack_require__(353);
 
@@ -39382,16 +39382,7 @@ webpackJsonp([0,1],[
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	function connectWebViewJavascriptBridge(callback) {
-	    if (window.WebViewJavascriptBridge) {
-	        callback(WebViewJavascriptBridge);
-	    } else {
-	        document.addEventListener('WebViewJavascriptBridgeReady', function () {
-	            callback(WebViewJavascriptBridge);
-	        }, false);
-	    }
-	}
-
+	/*检测当前运行的终端是什么*/
 	function ngator() {
 	    var u = navigator.userAgent;
 	    return {
@@ -39407,6 +39398,32 @@ webpackJsonp([0,1],[
 	        iPhone: u.indexOf('iPhone') > -1 && u.indexOf('Mac') > -1, //是否为iPhoneD
 	        iPad: u.indexOf('iPad') > -1, //是否iPad
 	        webApp: u.indexOf('Safari') == -1 //是否为App应用程序，没有头部与底部
+	    };
+	}
+	/*与ios通讯方法*/
+	function connectWebViewJavascriptBridge(callback) {
+	    if (window.WebViewJavascriptBridge) {
+	        callback(WebViewJavascriptBridge);
+	    } else {
+	        document.addEventListener('WebViewJavascriptBridgeReady', function () {
+	            callback(WebViewJavascriptBridge);
+	        }, false);
+	    }
+	}
+	/*跟ios和android交互传递信息*/
+	function sendToNative(param) {
+	    var android = ngator().android;
+	    var ios = ngator().ios;
+	    var method = param.method;
+	    var data = param.data;
+	    console.log('android:' + android + '&' + 'ios:' + ios + 'orderNoResult:');
+	    console.log(JSON.stringify(data));
+	    if (android) {
+	        window.teeya[method](JSON.stringify(data));
+	    } else if (ios) {
+	        connectWebViewJavascriptBridge(function (bridge) {
+	            bridge.send(data);
+	        });
 	    };
 	}
 
@@ -39576,6 +39593,7 @@ webpackJsonp([0,1],[
 	;
 
 	exports.connectWebViewJavascriptBridge = connectWebViewJavascriptBridge;
+	exports.sendToNative = sendToNative;
 	exports.ngator = ngator;
 	exports.Title = Title;
 	exports.GoodsList = GoodsList;

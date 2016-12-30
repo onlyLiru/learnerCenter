@@ -1,16 +1,6 @@
 import React from 'react';
 import { Carousel,Grid, WhiteSpace, Icon } from 'antd-mobile';
-
-function connectWebViewJavascriptBridge(callback) {
-    if (window.WebViewJavascriptBridge) {
-        callback(WebViewJavascriptBridge)
-    } else {
-        document.addEventListener('WebViewJavascriptBridgeReady', function() {
-            callback(WebViewJavascriptBridge)
-        }, false)
-    }
-}
-
+/*检测当前运行的终端是什么*/
 function ngator(){
     var u = navigator.userAgent;
     return{
@@ -26,6 +16,32 @@ function ngator(){
         iPhone:u.indexOf('iPhone') > -1 && u.indexOf('Mac') > -1, //是否为iPhoneD
         iPad:u.indexOf('iPad') > -1, //是否iPad
         webApp:u.indexOf('Safari') == -1 //是否为App应用程序，没有头部与底部
+    };
+}
+/*与ios通讯方法*/
+function connectWebViewJavascriptBridge(callback) {
+    if (window.WebViewJavascriptBridge) {
+        callback(WebViewJavascriptBridge)
+    } else {
+        document.addEventListener('WebViewJavascriptBridgeReady', function() {
+            callback(WebViewJavascriptBridge)
+        }, false)
+    }
+}
+/*跟ios和android交互传递信息*/
+function sendToNative(param){
+    const android = ngator().android ;
+    const ios = ngator().ios;
+    const method=param.method;
+    const data=param.data;
+    console.log('android:'+android +'&' + 'ios:'+ ios +'orderNoResult:');
+    console.log(JSON.stringify(data));
+    if(android){
+        window.teeya[method](JSON.stringify(data));
+    }else if(ios){
+        connectWebViewJavascriptBridge(function(bridge) {
+            bridge.send(data);
+        });
     };
 }
 
@@ -111,4 +127,4 @@ class ImgScroll extends React.Component {
     }
 };
 
-export { connectWebViewJavascriptBridge, ngator, Title ,GoodsList,ImgScroll }
+export { connectWebViewJavascriptBridge, sendToNative, ngator, Title ,GoodsList,ImgScroll }
