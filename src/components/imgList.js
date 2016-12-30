@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Toast } from 'antd-mobile';
 const ImgList= React.createClass({
 	getInitialState:function()
 	{
@@ -34,6 +34,10 @@ const ImgList= React.createClass({
 				return <a href={ d.link ? d.link : 'javascript:' } key={i} className="block"><img className="autoImg" src={d.img} /></a>
 			}) }
 		</div>)
+	},
+	componentWillMount:function(){
+		const id= this.props.location.query.id;
+		Toast.info('活动到ID是:'+id);
 	}
 });
 

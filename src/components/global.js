@@ -1,4 +1,5 @@
 import React from 'react';
+import { Carousel,Grid, WhiteSpace, Icon } from 'antd-mobile';
 
 function connectWebViewJavascriptBridge(callback) {
     if (window.WebViewJavascriptBridge) {
@@ -40,4 +41,74 @@ class Title extends React.Component {
     }
 };
 
-export { connectWebViewJavascriptBridge, ngator, Title }
+/*商品列表*/
+class GoodsList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            
+        }
+    }
+    html () {
+        const html=this.props.data.map((d,i) => {
+            const title=<Title classProps={d.title.className} name={d.title.name} />;
+            const goodsHtml=<Grid columnNum={2} data={d.goods} hasLine={false}
+                renderItem={(dataItem, index) => (
+                    <div style={{ 
+                        padding:'.1rem',
+                        textAlign: 'center' 
+                    }}>
+                        <a className="block" href={dataItem.link}><img src={dataItem.img} style={{ 
+                            margin: '0',
+                            width: '100%', 
+                        }} /></a>
+                        <div style={{marginBottom:'.2rem'}}>
+                          <p className="line1">{dataItem.text}</p>
+                          <WhiteSpace size="sm" />
+                          <div className="colorRed">¥{dataItem.price}</div>
+                        </div>
+                    </div>
+                )}
+            />;
+            const banner = d.banner.img ? <a className="block" href={d.banner.link}><img className="autoImg" src="http://img.fancyedu.com/sys/ic/operation/1482377094829_banner2.png" /></a> : '';
+            return (<div key={i}>
+                { title }
+                { goodsHtml }
+                { banner }
+            </div>)
+        });
+        return html;
+    }
+    render() {
+        return (<div className="bgColorWhite overflowHidden">
+            { this.html() }
+        </div>);
+    }
+};
+/*banner轮播图*/
+class ImgScroll extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        };
+    }
+    render() {
+        let imgHtml=this.props.data.map( (d,i)=> {
+            return <div key={i} className="item">
+                <a onClick={ ()=>{ location.href=d.link } } className="block" href={d.link}><img className="autoImg" src={d.img} /></a>
+            </div>;
+        } );
+        return (<div>
+            <Carousel className="my-carousel">
+                {imgHtml}
+            </Carousel>
+
+        </div>)
+    }
+    componentWillMount() {
+        
+    }
+};
+
+export { connectWebViewJavascriptBridge, ngator, Title ,GoodsList,ImgScroll }

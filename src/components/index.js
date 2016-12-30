@@ -1,32 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { Carousel,Grid, WhiteSpace, Icon } from 'antd-mobile';
-import { Title } from './global.js';
-/*banner轮播图*/
-class ImgScroll extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
+import { Title,GoodsList,ImgScroll } from './global.js';
 
-		};
-	}
-	render() {
-		let imgHtml=this.props.data.map( (d,i)=> {
-			return <div key={i} className="item">
-				<a onClick={ ()=>{ location.href=d.link } } className="block" href={d.link}><img className="autoImg" src={d.img} /></a>
-			</div>;
-		} );
-		return (<div>
-			<Carousel className="my-carousel">
-				{imgHtml}
-			</Carousel>
-
-		</div>)
-	}
-	componentWillMount() {
-		
-	}
-};
 /*乐园专享*/
 class GridImgNav extends React.Component {
 	constructor(props) {
@@ -103,49 +79,6 @@ class GridIconNav extends React.Component {
 		</div>)
 	}
 };
-/*商品列表*/
-class GoodsList extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state={
-			
-		}
-	}
-	html () {
-		const html=this.props.data.map((d,i) => {
-			const title=<Title classProps={d.title.className} name={d.title.name} />;
-			const goodsHtml=<Grid columnNum={2} data={d.goods} hasLine={false}
-		        renderItem={(dataItem, index) => (
-					<div style={{ 
-						padding:'.1rem',
-						textAlign: 'center' 
-					}}>
-			            <a className="block" href={dataItem.link}><img src={dataItem.img} style={{ 
-			            	margin: '0',
-			            	width: '100%', 
-			            }} /></a>
-			            <div style={{marginBottom:'.2rem'}}>
-                          <p>{dataItem.text}</p>
-                          <div className="colorRed">25.00</div>
-                        </div>
-		        	</div>
-		        )}
-			/>;
-			const banner = d.banner.img ? <a className="block" href={d.banner.link}><img className="autoImg" src="http://img.fancyedu.com/sys/ic/operation/1482377094829_banner2.png" /></a> : '';
-			return (<div key={i}>
-				{ title }
-				{ goodsHtml }
-				{ banner }
-			</div>)
-		});
-		return html;
-	}
-	render() {
-		return (<div className="bgColorWhite overflowHidden">
-			{ this.html() }
-		</div>);
-	}
-};
 
 const Index= React.createClass({
 	getInitialState:function(){
@@ -162,10 +95,10 @@ const Index= React.createClass({
 						link:'/rct/ngProject?id=0'
 					},{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377109011_DK.png',
-						link:'/rct/ngProject?id=1'
+						link:'/rct/dkProject?id=0'
 					},{
-						img:'http://img.fancyedu.com/sys/ic/operation/1482377101789_dili.png',
-						link:'/rct/ngProject?id=2'
+						img:'http://img.fancyedu.com/sys/ic/operation/1482377116048_dsn.png',
+						link:'/rct/imgList?id=2'
 					}],
 				bookCategory:[{
 						img:'http://img.fancyedu.com/sys/ic/operation/1482377020458_（1）0-3.png',
@@ -201,11 +134,13 @@ const Index= React.createClass({
 							{
 								img:'http://img.fancyedu.com/sys/ic/operation/1482377124086_s1.png',
 								link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
-								text:'岁以上0-3岁'
+								text:'岁以上0-3岁',
+								price:'88.00',
 							},{
 								img:'http://img.fancyedu.com/sys/ic/operation/1482377124086_s1.png',
 								link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
-								text:'岁以上0-3岁'
+								text:'岁以上0岁以上0岁以上0岁以上0-3岁',
+								price:'88.00',
 							}
 						],
 						banner:{
@@ -221,11 +156,13 @@ const Index= React.createClass({
 							{
 								img:'http://img.fancyedu.com/sys/ic/operation/1482377124086_s1.png',
 								link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
-								text:'岁以上0-3岁'
+								text:'岁以上0-3岁',
+								price:'88.00',
 							},{
 								img:'http://img.fancyedu.com/sys/ic/operation/1482377124086_s1.png',
 								link:'http://mall.fancyedu.com/goods/detail.html?goodsId=10000013612',
-								text:'岁以上0-3岁'
+								text:'岁以上0-3岁',
+								price:'88.00',
 							}
 						],
 						banner:{
